@@ -16,9 +16,9 @@ npm install @scalar/galaxy
 ## Client setup and authentication
 
 ```ts
-import ScalarGalaxy from "@scalar/galaxy";
+import Galaxy from "@scalar/galaxy";
 
-const client = new ScalarGalaxy({
+const client = new Galaxy({
   bearerAuth: process.env["BEARER_AUTH"], // defaults to the BEARER_AUTH env var
   environment: "production",
 });
@@ -38,9 +38,9 @@ Provide credentials using the options below. Environment variables are read auto
 ## Calling operations
 
 ```ts
-import ScalarGalaxy from "@scalar/galaxy";
+import Galaxy from "@scalar/galaxy";
 
-const client = new ScalarGalaxy({
+const client = new Galaxy({
   bearerAuth: process.env["BEARER_AUTH"], // defaults to the BEARER_AUTH env var
   environment: "production",
 });

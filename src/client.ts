@@ -158,12 +158,12 @@ export interface ClientOptions {
   logger?: Logger | undefined;
 }
 
-export type ScalarGalaxyOptions = ClientOptions;
+export type GalaxyOptions = ClientOptions;
 
 /**
  * API Client for interfacing with the ScalarGalaxy API.
  */
-export class ScalarGalaxy {
+export class Galaxy {
   bearerAuth: string | AuthTokenProvider | undefined;
   basicAuthUsername: string | AuthTokenProvider | undefined;
   basicAuthPassword: string | AuthTokenProvider | undefined;
@@ -236,10 +236,10 @@ export class ScalarGalaxy {
     };
     const environment = options.environment ?? "production";
     const baseURLOverridden = baseURL !== null && baseURL !== undefined && baseURL !== "";
-    if (baseURLOverridden && options.environment) throw new Errors.ScalarGalaxyError("Ambiguous URL; The `baseURL` option (or SCALAR_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null");
+    if (baseURLOverridden && options.environment) throw new Errors.GalaxyError("Ambiguous URL; The `baseURL` option (or SCALAR_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null");
     const defaultBaseURL = environments[environment];
     this.baseURL = options.baseURL || defaultBaseURL;
-    this.timeout = options.timeout ?? ScalarGalaxy.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? Galaxy.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
@@ -898,21 +898,21 @@ export class ScalarGalaxy {
   private async resolveAuthOption(optionName: string, value: string | AuthTokenProvider | null | undefined): Promise<string | undefined> {
     if (value == null) return undefined;
     const token = typeof value === "function" ? await value() : value;
-    if (!token) throw new Errors.ScalarGalaxyError(`Expected '${optionName}' to resolve to a non-empty string.`);
+    if (!token) throw new Errors.GalaxyError(`Expected '${optionName}' to resolve to a non-empty string.`);
     return token;
   }
 
   private resolveAuthOptionSync(optionName: string, value: string | AuthTokenProvider | null | undefined): string | undefined {
     if (value == null) return undefined;
     const token = typeof value === "function" ? value() : value;
-    if (typeof token !== "string" || !token) throw new Errors.ScalarGalaxyError(`Expected '${optionName}' to resolve to a non-empty string.`);
+    if (typeof token !== "string" || !token) throw new Errors.GalaxyError(`Expected '${optionName}' to resolve to a non-empty string.`);
     return token;
   }
 
-  static ScalarGalaxy = this;
+  static Galaxy = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static ScalarGalaxyError = Errors.ScalarGalaxyError;
+  static GalaxyError = Errors.GalaxyError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -934,12 +934,12 @@ export class ScalarGalaxy {
   webhooks: Webhooks = new Webhooks(this);
 }
 
-ScalarGalaxy.Planets = Planets;
-ScalarGalaxy.CelestialBodies = CelestialBodies;
-ScalarGalaxy.Authentication = Authentication;
-ScalarGalaxy.Webhooks = Webhooks;
+Galaxy.Planets = Planets;
+Galaxy.CelestialBodies = CelestialBodies;
+Galaxy.Authentication = Authentication;
+Galaxy.Webhooks = Webhooks;
 
-export declare namespace ScalarGalaxy {
+export declare namespace Galaxy {
   export type RequestOptions = Opts.RequestOptions;
   export {
     Planets as Planets,

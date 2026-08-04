@@ -33,9 +33,9 @@ npm install @scalar/galaxy
 ## Usage
 
 ```ts
-import ScalarGalaxy from "@scalar/galaxy";
+import Galaxy from "@scalar/galaxy";
 
-const client = new ScalarGalaxy({
+const client = new Galaxy({
   bearerAuth: process.env["BEARER_AUTH"], // defaults to the BEARER_AUTH env var
   environment: "production",
 });
@@ -109,9 +109,9 @@ Documented error statuses: `400`, `401`, `403`, `404`, `409`, `422`, `429`.
 Configure the generated client by setting any of these options when you create it.
 
 ```ts
-import ScalarGalaxy from "@scalar/galaxy";
+import Galaxy from "@scalar/galaxy";
 
-const client = new ScalarGalaxy({
+const client = new Galaxy({
   timeout: 60000,
   maxRetries: 2,
   logLevel: "debug",

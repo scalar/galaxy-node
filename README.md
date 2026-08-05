@@ -44,6 +44,7 @@ const listAllData = await client.planets.listAllData({
   limit: 10,
   offset: 0,
 });
+
 console.log(listAllData);
 ```
 

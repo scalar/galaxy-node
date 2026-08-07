@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import { APIResource } from "../resource";
-import * as UserAPI from "./authentication";
+import { APIResource } from '../resource';
+import * as UserAPI from './authentication';
 import { Webhook } from 'standardwebhooks';
 
 export class Webhooks extends APIResource {
@@ -26,7 +26,7 @@ export interface NewPlanetWebhookEvent {
   id: number;
   name: string;
   description?: string | null;
-  type?: "terrestrial" | "gas_giant" | "ice_giant" | "dwarf" | "super_earth";
+  type?: 'terrestrial' | 'gas_giant' | 'ice_giant' | 'dwarf' | 'super_earth';
   /**
    * A score from 0 to 1 indicating potential habitability
    * @format float
@@ -126,7 +126,7 @@ export namespace NewPlanetWebhookEvent {
      * @format float
      */
     diameter?: number;
-    type?: "moon" | "asteroid" | "comet";
+    type?: 'moon' | 'asteroid' | 'comet';
     orbit?: unknown;
   }
 }

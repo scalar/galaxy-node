@@ -1,13 +1,13 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import { APIResource } from "../resource";
-import { APIPromise } from "../api-promise";
-import type { RequestOptions } from "../internal/request-options";
-import { buildHeaders } from "../internal/headers";
-import { multipartFormRequestOptions } from "../internal/uploads";
-import { path as __scalarPath } from "../internal/utils/path";
-import type { Uploadable } from "../core/uploads";
-import type * as AuthenticationAPI from "./authentication";
+import { APIResource } from '../resource';
+import { APIPromise } from '../api-promise';
+import type { RequestOptions } from '../internal/request-options';
+import { buildHeaders } from '../internal/headers';
+import { multipartFormRequestOptions } from '../internal/uploads';
+import { path as __scalarPath } from '../internal/utils/path';
+import type { Uploadable } from '../core/uploads';
+import type * as AuthenticationAPI from './authentication';
 
 export class Planets extends APIResource {
   /**
@@ -25,8 +25,11 @@ export class Planets extends APIResource {
    * });
    * ```
    */
-  listAllData(query: PlanetListAllDataParams | null | undefined = {}, options?: RequestOptions): APIPromise<PlanetListAllDataResponse> {
-    return this._client.get("/planets", { query, ...options });
+  listAllData(
+    query: PlanetListAllDataParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<PlanetListAllDataResponse> {
+    return this._client.get('/planets', { query, ...options });
   }
 
   /**
@@ -41,8 +44,11 @@ export class Planets extends APIResource {
    * const planet = await client.planets.create();
    * ```
    */
-  create(body: PlanetCreateParams | null | undefined = undefined, options?: RequestOptions): APIPromise<Planet> {
-    return this._client.post("/planets", { body, ...options });
+  create(
+    body: PlanetCreateParams | null | undefined = undefined,
+    options?: RequestOptions,
+  ): APIPromise<Planet> {
+    return this._client.post('/planets', { body, ...options });
   }
 
   /**
@@ -74,7 +80,11 @@ export class Planets extends APIResource {
    * const planet = await client.planets.update(1);
    * ```
    */
-  update(planetID: number, body: PlanetUpdateParams | null | undefined = undefined, options?: RequestOptions): APIPromise<Planet> {
+  update(
+    planetID: number,
+    body: PlanetUpdateParams | null | undefined = undefined,
+    options?: RequestOptions,
+  ): APIPromise<Planet> {
     return this._client.put(__scalarPath`/planets/${planetID}`, { body, ...options });
   }
 
@@ -91,7 +101,10 @@ export class Planets extends APIResource {
    * ```
    */
   delete(planetID: number, options?: RequestOptions): APIPromise<void> {
-    return this._client.delete(__scalarPath`/planets/${planetID}`, { ...options, headers: buildHeaders([{ Accept: "*/*" }, options?.headers]) });
+    return this._client.delete(__scalarPath`/planets/${planetID}`, {
+      ...options,
+      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+    });
   }
 
   /**
@@ -107,8 +120,15 @@ export class Planets extends APIResource {
    * const uploadImage = await client.planets.uploadImage(1);
    * ```
    */
-  uploadImage(planetID: number, body: PlanetUploadImageParams | null | undefined = {}, options?: RequestOptions): APIPromise<PlanetUploadImageResponse> {
-    return this._client.post(__scalarPath`/planets/${planetID}/image`, multipartFormRequestOptions({ body, ...options }, this._client));
+  uploadImage(
+    planetID: number,
+    body: PlanetUploadImageParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<PlanetUploadImageResponse> {
+    return this._client.post(
+      __scalarPath`/planets/${planetID}/image`,
+      multipartFormRequestOptions({ body, ...options }, this._client),
+    );
   }
 }
 
@@ -122,7 +142,7 @@ export interface Planet {
   id: number;
   name: string;
   description?: string | null;
-  type?: "terrestrial" | "gas_giant" | "ice_giant" | "dwarf" | "super_earth";
+  type?: 'terrestrial' | 'gas_giant' | 'ice_giant' | 'dwarf' | 'super_earth';
   /**
    * A score from 0 to 1 indicating potential habitability
    * @format float
@@ -252,7 +272,7 @@ export namespace PlanetListAllDataResponse {
 export interface PlanetCreateParams {
   name: string;
   description?: string | null;
-  type?: "terrestrial" | "gas_giant" | "ice_giant" | "dwarf" | "super_earth";
+  type?: 'terrestrial' | 'gas_giant' | 'ice_giant' | 'dwarf' | 'super_earth';
   /**
    * A score from 0 to 1 indicating potential habitability
    * @format float
@@ -344,7 +364,7 @@ export namespace PlanetCreateParams {
      * @format float
      */
     diameter?: number;
-    type?: "moon" | "asteroid" | "comet";
+    type?: 'moon' | 'asteroid' | 'comet';
     orbit?: unknown;
   }
 }
@@ -352,7 +372,7 @@ export namespace PlanetCreateParams {
 export interface PlanetUpdateParams {
   name: string;
   description?: string | null;
-  type?: "terrestrial" | "gas_giant" | "ice_giant" | "dwarf" | "super_earth";
+  type?: 'terrestrial' | 'gas_giant' | 'ice_giant' | 'dwarf' | 'super_earth';
   /**
    * A score from 0 to 1 indicating potential habitability
    * @format float
@@ -444,7 +464,7 @@ export namespace PlanetUpdateParams {
      * @format float
      */
     diameter?: number;
-    type?: "moon" | "asteroid" | "comet";
+    type?: 'moon' | 'asteroid' | 'comet';
     orbit?: unknown;
   }
 }

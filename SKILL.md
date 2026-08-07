@@ -16,11 +16,11 @@ npm install @scalar/galaxy
 ## Client setup and authentication
 
 ```ts
-import Galaxy from "@scalar/galaxy";
+import Galaxy from '@scalar/galaxy';
 
 const client = new Galaxy({
-  bearerAuth: process.env["BEARER_AUTH"], // defaults to the BEARER_AUTH env var
-  environment: "production",
+  bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var
+  environment: 'production',
 });
 ```
 
@@ -38,11 +38,11 @@ Provide credentials using the options below. Environment variables are read auto
 ## Calling operations
 
 ```ts
-import Galaxy from "@scalar/galaxy";
+import Galaxy from '@scalar/galaxy';
 
 const client = new Galaxy({
-  bearerAuth: process.env["BEARER_AUTH"], // defaults to the BEARER_AUTH env var
-  environment: "production",
+  bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var
+  environment: 'production',
 });
 
 const listAllData = await client.planets.listAllData({
@@ -60,7 +60,7 @@ Method names, parameter shapes, and response types are generated from the API de
 Non-success responses throw generated API errors. Error objects expose status, headers, response body, and request metadata where the target runtime supports it.
 
 ```ts
-import { APIError } from "@scalar/galaxy";
+import { APIError } from '@scalar/galaxy';
 
 try {
   const listAllData = await client.planets.listAllData({

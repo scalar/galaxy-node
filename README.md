@@ -33,11 +33,11 @@ npm install @scalar/galaxy
 ## Usage
 
 ```ts
-import Galaxy from "@scalar/galaxy";
+import Galaxy from '@scalar/galaxy';
 
 const client = new Galaxy({
-  bearerAuth: process.env["BEARER_AUTH"], // defaults to the BEARER_AUTH env var
-  environment: "production",
+  bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var
+  environment: 'production',
 });
 
 const listAllData = await client.planets.listAllData({
@@ -86,7 +86,7 @@ Declared schemes:
 Non-success responses throw generated API errors. Error objects expose status, headers, response body, and request metadata where the target runtime supports it.
 
 ```ts
-import { APIError } from "@scalar/galaxy";
+import { APIError } from '@scalar/galaxy';
 
 try {
   const listAllData = await client.planets.listAllData({
@@ -110,12 +110,12 @@ Documented error statuses: `400`, `401`, `403`, `404`, `409`, `422`, `429`.
 Configure the generated client by setting any of these options when you create it.
 
 ```ts
-import Galaxy from "@scalar/galaxy";
+import Galaxy from '@scalar/galaxy';
 
 const client = new Galaxy({
   timeout: 60000,
   maxRetries: 2,
-  logLevel: "debug",
+  logLevel: 'debug',
 });
 ```
 

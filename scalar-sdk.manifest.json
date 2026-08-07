@@ -1,28 +1,14 @@
 {
   "name": "ScalarGalaxy",
   "slug": "scalarGalaxy",
-  "generatorVersion": "0.22.5",
-  "servers": [
-    "https://galaxy.scalar.com",
-    "{protocol}://void.scalar.com/{path}"
-  ],
+  "generatorVersion": "0.22.10",
+  "servers": ["https://galaxy.scalar.com", "{protocol}://void.scalar.com/{path}"],
   "environments": {
     "production": "https://galaxy.scalar.com",
     "responds_with_your_request_data": "{protocol}://void.scalar.com/{path}"
   },
-  "environmentOrder": [
-    "production",
-    "responds_with_your_request_data"
-  ],
-  "auth": [
-    "bearer",
-    "basic",
-    "apiKey",
-    "apiKey",
-    "apiKey",
-    "oauth2",
-    "oauth2"
-  ],
+  "environmentOrder": ["production", "responds_with_your_request_data"],
+  "auth": ["bearer", "basic", "apiKey", "apiKey", "apiKey", "oauth2", "oauth2"],
   "authDetails": [
     {
       "kind": "bearer",
@@ -59,41 +45,25 @@
           "authorizationUrl": "https://galaxy.scalar.com/oauth/authorize",
           "tokenUrl": "https://galaxy.scalar.com/oauth/token",
           "refreshUrl": "",
-          "scopes": [
-            "read:account",
-            "write:planets",
-            "read:planets"
-          ]
+          "scopes": ["read:account", "write:planets", "read:planets"]
         },
         {
           "kind": "clientCredentials",
           "tokenUrl": "https://galaxy.scalar.com/oauth/token",
           "refreshUrl": "",
-          "scopes": [
-            "read:account",
-            "write:planets",
-            "read:planets"
-          ]
+          "scopes": ["read:account", "write:planets", "read:planets"]
         },
         {
           "kind": "password",
           "tokenUrl": "https://galaxy.scalar.com/oauth/token",
           "refreshUrl": "",
-          "scopes": [
-            "read:account",
-            "write:planets",
-            "read:planets"
-          ]
+          "scopes": ["read:account", "write:planets", "read:planets"]
         },
         {
           "kind": "implicit",
           "authorizationUrl": "https://galaxy.scalar.com/oauth/authorize",
           "refreshUrl": "",
-          "scopes": [
-            "read:account",
-            "write:planets",
-            "read:planets"
-          ]
+          "scopes": ["read:account", "write:planets", "read:planets"]
         }
       ]
     },
@@ -121,9 +91,7 @@
             "deprecated": false,
             "access": "readOnly",
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": 1
             },
             "type": {
@@ -138,9 +106,7 @@
             "required": false,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "Marc"
             },
             "type": {
@@ -166,9 +132,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "marc@scalar.com"
             },
             "type": {
@@ -184,9 +148,7 @@
             "deprecated": false,
             "access": "writeOnly",
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "i-love-scalar"
             },
             "type": {
@@ -212,9 +174,7 @@
             "required": false,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
             },
             "type": {
@@ -256,10 +216,7 @@
             "comet": "satellite"
           }
         },
-        "variantNames": [
-          null,
-          null
-        ]
+        "variantNames": [null, null]
       }
     },
     {
@@ -277,9 +234,7 @@
             "deprecated": false,
             "access": "readOnly",
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": 1
             },
             "type": {
@@ -294,9 +249,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "Mars"
             },
             "type": {
@@ -310,9 +263,7 @@
             "required": false,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "The red planet"
             },
             "type": {
@@ -334,34 +285,14 @@
             "required": false,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "terrestrial"
             },
             "type": {
               "kind": "enum",
-              "values": [
-                "terrestrial",
-                "gas_giant",
-                "ice_giant",
-                "dwarf",
-                "super_earth"
-              ],
-              "names": [
-                "Terrestrial",
-                "GasGiant",
-                "IceGiant",
-                "Dwarf",
-                "SuperEarth"
-              ],
-              "deprecations": [
-                false,
-                false,
-                false,
-                false,
-                false
-              ]
+              "values": ["terrestrial", "gas_giant", "ice_giant", "dwarf", "super_earth"],
+              "names": ["Terrestrial", "GasGiant", "IceGiant", "Dwarf", "SuperEarth"],
+              "deprecations": [false, false, false, false, false]
             }
           },
           {
@@ -370,9 +301,7 @@
             "required": false,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": 0.68
             },
             "type": {
@@ -396,9 +325,7 @@
                   "required": false,
                   "deprecated": false,
                   "extensions": {
-                    "source": [
-                      "examples"
-                    ],
+                    "source": ["examples"],
                     "examples": 0.107
                   },
                   "type": {
@@ -413,9 +340,7 @@
                   "required": false,
                   "deprecated": false,
                   "extensions": {
-                    "source": [
-                      "examples"
-                    ],
+                    "source": ["examples"],
                     "examples": 0.532
                   },
                   "type": {
@@ -430,9 +355,7 @@
                   "required": false,
                   "deprecated": false,
                   "extensions": {
-                    "source": [
-                      "examples"
-                    ],
+                    "source": ["examples"],
                     "examples": 0.378
                   },
                   "type": {
@@ -455,9 +378,7 @@
                         "required": false,
                         "deprecated": false,
                         "extensions": {
-                          "source": [
-                            "examples"
-                          ],
+                          "source": ["examples"],
                           "examples": 130
                         },
                         "type": {
@@ -472,9 +393,7 @@
                         "required": false,
                         "deprecated": false,
                         "extensions": {
-                          "source": [
-                            "examples"
-                          ],
+                          "source": ["examples"],
                           "examples": 308
                         },
                         "type": {
@@ -489,9 +408,7 @@
                         "required": false,
                         "deprecated": false,
                         "extensions": {
-                          "source": [
-                            "examples"
-                          ],
+                          "source": ["examples"],
                           "examples": 210
                         },
                         "type": {
@@ -532,9 +449,7 @@
                     "required": false,
                     "deprecated": false,
                     "extensions": {
-                      "source": [
-                        "examples"
-                      ],
+                      "source": ["examples"],
                       "examples": "CO2"
                     },
                     "type": {
@@ -548,9 +463,7 @@
                     "required": false,
                     "deprecated": false,
                     "extensions": {
-                      "source": [
-                        "examples"
-                      ],
+                      "source": ["examples"],
                       "examples": 95.3
                     },
                     "type": {
@@ -573,9 +486,7 @@
             "required": false,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "1610-01-07T00:00:00Z"
             },
             "type": {
@@ -590,9 +501,7 @@
             "required": false,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "https://cdn.scalar.com/photos/mars.jpg"
             },
             "type": {
@@ -637,14 +546,8 @@
             "required": false,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": [
-                "solar-system",
-                "rocky",
-                "explored"
-              ]
+              "source": ["examples"],
+              "examples": ["solar-system", "rocky", "explored"]
             },
             "type": {
               "kind": "array",
@@ -661,9 +564,7 @@
             "deprecated": false,
             "access": "readOnly",
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "2024-01-15T14:30:00Z"
             },
             "type": {
@@ -678,9 +579,7 @@
             "required": false,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "https://example.com/webhook"
             },
             "type": {
@@ -695,9 +594,7 @@
             "required": false,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "https://example.com/webhook"
             },
             "type": {
@@ -725,9 +622,7 @@
             "deprecated": false,
             "access": "readOnly",
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": 1
             },
             "type": {
@@ -742,9 +637,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "Phobos"
             },
             "type": {
@@ -758,9 +651,7 @@
             "required": false,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "Phobos is the larger and innermost of the two moons of Mars."
             },
             "type": {
@@ -782,9 +673,7 @@
             "required": false,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": 22.2
             },
             "type": {
@@ -799,28 +688,14 @@
             "required": false,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "moon"
             },
             "type": {
               "kind": "enum",
-              "values": [
-                "moon",
-                "asteroid",
-                "comet"
-              ],
-              "names": [
-                "Moon",
-                "Asteroid",
-                "Comet"
-              ],
-              "deprecations": [
-                false,
-                false,
-                false
-              ]
+              "values": ["moon", "asteroid", "comet"],
+              "names": ["Moon", "Asteroid", "Comet"],
+              "deprecations": [false, false, false]
             }
           },
           {
@@ -847,9 +722,7 @@
                   "required": false,
                   "deprecated": false,
                   "extensions": {
-                    "source": [
-                      "examples"
-                    ],
+                    "source": ["examples"],
                     "examples": 0.319
                   },
                   "type": {
@@ -864,9 +737,7 @@
                   "required": false,
                   "deprecated": false,
                   "extensions": {
-                    "source": [
-                      "examples"
-                    ],
+                    "source": ["examples"],
                     "examples": 9376
                   },
                   "type": {
@@ -917,9 +788,7 @@
                   "required": false,
                   "deprecated": false,
                   "extensions": {
-                    "source": [
-                      "examples"
-                    ],
+                    "source": ["examples"],
                     "examples": 10
                   },
                   "type": {
@@ -934,9 +803,7 @@
                   "required": false,
                   "deprecated": false,
                   "extensions": {
-                    "source": [
-                      "examples"
-                    ],
+                    "source": ["examples"],
                     "examples": 0
                   },
                   "type": {
@@ -951,9 +818,7 @@
                   "required": false,
                   "deprecated": false,
                   "extensions": {
-                    "source": [
-                      "examples"
-                    ],
+                    "source": ["examples"],
                     "examples": 100
                   },
                   "type": {
@@ -968,9 +833,7 @@
                   "required": false,
                   "deprecated": false,
                   "extensions": {
-                    "source": [
-                      "examples"
-                    ],
+                    "source": ["examples"],
                     "examples": "/planets?limit=10&offset=10"
                   },
                   "type": {
@@ -1518,16 +1381,8 @@
       }
     }
   ],
-  "resources": [
-    "planets",
-    "celestialBodies",
-    "authentication"
-  ],
-  "publicResources": [
-    "planets",
-    "celestialBodies",
-    "authentication"
-  ],
+  "resources": ["planets", "celestialBodies", "authentication"],
+  "publicResources": ["planets", "celestialBodies", "authentication"],
   "operations": [
     {
       "resource": "planets",
@@ -1539,14 +1394,8 @@
       "path": "/planets",
       "pathParams": [],
       "publicPathParams": [],
-      "queryParams": [
-        "limit",
-        "offset"
-      ],
-      "publicQueryParams": [
-        "limit",
-        "offset"
-      ],
+      "queryParams": ["limit", "offset"],
+      "publicQueryParams": ["limit", "offset"],
       "headerParams": [],
       "publicHeaderParams": [],
       "bodyParams": [],
@@ -1764,10 +1613,7 @@
       },
       "result": {
         "successStatus": "201",
-        "errorStatuses": [
-          "400",
-          "403"
-        ]
+        "errorStatuses": ["400", "403"]
       },
       "errorResponses": [
         {
@@ -1816,12 +1662,8 @@
       "deprecated": false,
       "method": "GET",
       "path": "/planets/{planetId}",
-      "pathParams": [
-        "planetId"
-      ],
-      "publicPathParams": [
-        "planetId"
-      ],
+      "pathParams": ["planetId"],
+      "publicPathParams": ["planetId"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
@@ -1870,9 +1712,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "404"
-        ]
+        "errorStatuses": ["404"]
       },
       "errorResponses": [
         {
@@ -1902,12 +1742,8 @@
       "deprecated": false,
       "method": "PUT",
       "path": "/planets/{planetId}",
-      "pathParams": [
-        "planetId"
-      ],
-      "publicPathParams": [
-        "planetId"
-      ],
+      "pathParams": ["planetId"],
+      "publicPathParams": ["planetId"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
@@ -2062,11 +1898,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "403",
-          "404"
-        ]
+        "errorStatuses": ["400", "403", "404"]
       },
       "errorResponses": [
         {
@@ -2130,12 +1962,8 @@
       "deprecated": false,
       "method": "DELETE",
       "path": "/planets/{planetId}",
-      "pathParams": [
-        "planetId"
-      ],
-      "publicPathParams": [
-        "planetId"
-      ],
+      "pathParams": ["planetId"],
+      "publicPathParams": ["planetId"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
@@ -2161,9 +1989,7 @@
       },
       "result": {
         "successStatus": "204",
-        "errorStatuses": [
-          "404"
-        ]
+        "errorStatuses": ["404"]
       },
       "errorResponses": [
         {
@@ -2193,22 +2019,14 @@
       "deprecated": false,
       "method": "POST",
       "path": "/planets/{planetId}/image",
-      "pathParams": [
-        "planetId"
-      ],
-      "publicPathParams": [
-        "planetId"
-      ],
+      "pathParams": ["planetId"],
+      "publicPathParams": ["planetId"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
       "publicHeaderParams": [],
-      "bodyParams": [
-        "image"
-      ],
-      "publicBodyParams": [
-        "image"
-      ],
+      "bodyParams": ["image"],
+      "publicBodyParams": ["image"],
       "bodyParamDetails": [
         {
           "name": "image",
@@ -2265,11 +2083,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "403",
-          "404"
-        ]
+        "errorStatuses": ["400", "403", "404"]
       },
       "errorResponses": [
         {
@@ -2339,12 +2153,8 @@
       "publicQueryParams": [],
       "headerParams": [],
       "publicHeaderParams": [],
-      "bodyParams": [
-        "body"
-      ],
-      "publicBodyParams": [
-        "body"
-      ],
+      "bodyParams": ["body"],
+      "publicBodyParams": ["body"],
       "bodyParamDetails": [
         {
           "name": "body",
@@ -2406,18 +2216,8 @@
       "publicQueryParams": [],
       "headerParams": [],
       "publicHeaderParams": [],
-      "bodyParams": [
-        "id",
-        "name",
-        "email",
-        "password"
-      ],
-      "publicBodyParams": [
-        "id",
-        "name",
-        "email",
-        "password"
-      ],
+      "bodyParams": ["id", "name", "email", "password"],
+      "publicBodyParams": ["id", "name", "email", "password"],
       "bodyParamDetails": [
         {
           "name": "id",
@@ -2487,13 +2287,7 @@
       },
       "result": {
         "successStatus": "201",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "409",
-          "422"
-        ]
+        "errorStatuses": ["400", "401", "403", "409", "422"]
       },
       "errorResponses": [
         {
@@ -2593,14 +2387,8 @@
       "publicQueryParams": [],
       "headerParams": [],
       "publicHeaderParams": [],
-      "bodyParams": [
-        "email",
-        "password"
-      ],
-      "publicBodyParams": [
-        "email",
-        "password"
-      ],
+      "bodyParams": ["email", "password"],
+      "publicBodyParams": ["email", "password"],
       "bodyParamDetails": [
         {
           "name": "email",
@@ -2662,12 +2450,7 @@
       },
       "result": {
         "successStatus": "201",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "429"
-        ]
+        "errorStatuses": ["400", "401", "403", "429"]
       },
       "errorResponses": [
         {
@@ -2790,10 +2573,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "401",
-          "403"
-        ]
+        "errorStatuses": ["401", "403"]
       },
       "errorResponses": [
         {

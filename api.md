@@ -21,11 +21,11 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 ## Setup
 
 ```ts
-import Galaxy from "@scalar/galaxy";
+import Galaxy from '@scalar/galaxy';
 
 const client = new Galaxy({
-  bearerAuth: process.env["BEARER_AUTH"], // defaults to the BEARER_AUTH env var
-  environment: "production",
+  bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var
+  environment: 'production',
 });
 ```
 
@@ -119,7 +119,7 @@ Stars, moons, comets, the occasional rogue asteroid — if it glows or drifts th
 
 ```ts
 const celestialBody = await client.celestialBodies.create({
-  name: "Mars",
+  name: 'Mars',
 });
 ```
 

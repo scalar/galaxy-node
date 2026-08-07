@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import { APIResource } from "../resource";
-import { APIPromise } from "../api-promise";
-import type { RequestOptions } from "../internal/request-options";
+import { APIResource } from '../resource';
+import { APIPromise } from '../api-promise';
+import type { RequestOptions } from '../internal/request-options';
 
 export class Authentication extends APIResource {
   /**
@@ -17,8 +17,11 @@ export class Authentication extends APIResource {
    * const user = await client.authentication.createUser();
    * ```
    */
-  createUser(body: AuthenticationCreateUserParams | null | undefined = undefined, options?: RequestOptions): APIPromise<User> {
-    return this._client.post("/user/signup", { body, ...options });
+  createUser(
+    body: AuthenticationCreateUserParams | null | undefined = undefined,
+    options?: RequestOptions,
+  ): APIPromise<User> {
+    return this._client.post('/user/signup', { body, ...options });
   }
 
   /**
@@ -33,8 +36,11 @@ export class Authentication extends APIResource {
    * const createToken = await client.authentication.createToken();
    * ```
    */
-  createToken(body: AuthenticationCreateTokenParams | null | undefined = undefined, options?: RequestOptions): APIPromise<AuthenticationCreateTokenResponse> {
-    return this._client.post("/auth/token", { body, ...options });
+  createToken(
+    body: AuthenticationCreateTokenParams | null | undefined = undefined,
+    options?: RequestOptions,
+  ): APIPromise<AuthenticationCreateTokenResponse> {
+    return this._client.post('/auth/token', { body, ...options });
   }
 
   /**
@@ -49,7 +55,7 @@ export class Authentication extends APIResource {
    * ```
    */
   listMe(options?: RequestOptions): APIPromise<User> {
-    return this._client.get("/me", options);
+    return this._client.get('/me', options);
   }
 }
 

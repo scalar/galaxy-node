@@ -33,10 +33,7 @@
       "description": "Responds with your request data",
       "variables": {
         "protocol": {
-          "enum": [
-            "https",
-            "http"
-          ],
+          "enum": ["https", "http"],
           "default": "https"
         },
         "path": {
@@ -97,9 +94,7 @@
   "paths": {
     "/planets": {
       "get": {
-        "tags": [
-          "Planets"
-        ],
+        "tags": ["Planets"],
         "summary": "Get all planets",
         "description": "It's easy to say you know them all, but do you really? Retrieve all the planets and check whether you missed one.",
         "operationId": "getAllData",
@@ -165,14 +160,12 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Galaxy from \"@scalar/galaxy\";\n\nconst client = new Galaxy({\n  bearerAuth: process.env[\"BEARER_AUTH\"], // defaults to the BEARER_AUTH env var\n  environment: \"production\",\n});\n\nconst listAllData = await client.planets.listAllData({\n  limit: 10,\n  offset: 0,\n});\nconsole.log(listAllData);"
+            "source": "import Galaxy from '@scalar/galaxy';\n\nconst client = new Galaxy({\n  bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var\n  environment: 'production',\n});\n\nconst listAllData = await client.planets.listAllData({\n  limit: 10,\n  offset: 0,\n});\n\nconsole.log(listAllData);"
           }
         ]
       },
       "post": {
-        "tags": [
-          "Planets"
-        ],
+        "tags": ["Planets"],
         "summary": "Create a planet",
         "description": "Time to play god and create a new planet. What do you think? Ah, don't think too much. What could go wrong anyway?",
         "operationId": "createPlanet",
@@ -301,16 +294,14 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Galaxy from \"@scalar/galaxy\";\n\nconst client = new Galaxy({\n  bearerAuth: process.env[\"BEARER_AUTH\"], // defaults to the BEARER_AUTH env var\n  environment: \"production\",\n});\n\nconst planet = await client.planets.create();\nconsole.log(planet);"
+            "source": "import Galaxy from '@scalar/galaxy';\n\nconst client = new Galaxy({\n  bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var\n  environment: 'production',\n});\n\nconst planet = await client.planets.create();\n\nconsole.log(planet);"
           }
         ]
       }
     },
     "/planets/{planetId}": {
       "get": {
-        "tags": [
-          "Planets"
-        ],
+        "tags": ["Planets"],
         "summary": "Get a planet",
         "description": "You'll better learn a little bit more about the planets. It might come in handy once space travel is available for everyone.",
         "operationId": "getPlanet",
@@ -359,14 +350,12 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Galaxy from \"@scalar/galaxy\";\n\nconst client = new Galaxy({\n  bearerAuth: process.env[\"BEARER_AUTH\"], // defaults to the BEARER_AUTH env var\n  environment: \"production\",\n});\n\nconst planet = await client.planets.retrieve(1);\nconsole.log(planet);"
+            "source": "import Galaxy from '@scalar/galaxy';\n\nconst client = new Galaxy({\n  bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var\n  environment: 'production',\n});\n\nconst planet = await client.planets.retrieve(1);\n\nconsole.log(planet);"
           }
         ]
       },
       "put": {
-        "tags": [
-          "Planets"
-        ],
+        "tags": ["Planets"],
         "summary": "Update a planet",
         "description": "Sometimes you make mistakes, that's fine. No worries, you can update all planets.",
         "operationId": "updatePlanet",
@@ -421,14 +410,12 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Galaxy from \"@scalar/galaxy\";\n\nconst client = new Galaxy({\n  bearerAuth: process.env[\"BEARER_AUTH\"], // defaults to the BEARER_AUTH env var\n  environment: \"production\",\n});\n\nconst planet = await client.planets.update(1);\nconsole.log(planet);"
+            "source": "import Galaxy from '@scalar/galaxy';\n\nconst client = new Galaxy({\n  bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var\n  environment: 'production',\n});\n\nconst planet = await client.planets.update(1);\n\nconsole.log(planet);"
           }
         ]
       },
       "delete": {
-        "tags": [
-          "Planets"
-        ],
+        "tags": ["Planets"],
         "summary": "Delete a planet",
         "operationId": "deletePlanet",
         "description": "This endpoint was used to delete planets. Unfortunately, that caused a lot of trouble for planets with life. So, this endpoint is now deprecated and should not be used anymore.",
@@ -451,16 +438,14 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Galaxy from \"@scalar/galaxy\";\n\nconst client = new Galaxy({\n  bearerAuth: process.env[\"BEARER_AUTH\"], // defaults to the BEARER_AUTH env var\n  environment: \"production\",\n});\n\nawait client.planets.delete(1);"
+            "source": "import Galaxy from '@scalar/galaxy';\n\nconst client = new Galaxy({\n  bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var\n  environment: 'production',\n});\n\nawait client.planets.delete(1);"
           }
         ]
       }
     },
     "/planets/{planetId}/image": {
       "post": {
-        "tags": [
-          "Planets"
-        ],
+        "tags": ["Planets"],
         "summary": "Upload an image to a planet",
         "description": "Got a crazy good photo of a planet? Share it with the world!",
         "operationId": "uploadImage",
@@ -480,10 +465,7 @@
                     "type": "string",
                     "format": "binary",
                     "description": "The image file to upload",
-                    "examples": [
-                      "@mars.jpg",
-                      "@jupiter.png"
-                    ]
+                    "examples": ["@mars.jpg", "@jupiter.png"]
                   }
                 }
               }
@@ -509,16 +491,14 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Galaxy from \"@scalar/galaxy\";\n\nconst client = new Galaxy({\n  bearerAuth: process.env[\"BEARER_AUTH\"], // defaults to the BEARER_AUTH env var\n  environment: \"production\",\n});\n\nconst uploadImage = await client.planets.uploadImage(1);\nconsole.log(uploadImage);"
+            "source": "import Galaxy from '@scalar/galaxy';\n\nconst client = new Galaxy({\n  bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var\n  environment: 'production',\n});\n\nconst uploadImage = await client.planets.uploadImage(1);\n\nconsole.log(uploadImage);"
           }
         ]
       }
     },
     "/celestial-bodies": {
       "post": {
-        "tags": [
-          "Celestial Bodies"
-        ],
+        "tags": ["Celestial Bodies"],
         "summary": "Create a celestial body",
         "description": "Stars, moons, comets, the occasional rogue asteroid — if it glows or drifts through the void, you can add it here.",
         "operationId": "createCelestialBody",
@@ -550,16 +530,14 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Galaxy from \"@scalar/galaxy\";\n\nconst client = new Galaxy({\n  bearerAuth: process.env[\"BEARER_AUTH\"], // defaults to the BEARER_AUTH env var\n  environment: \"production\",\n});\n\nconst celestialBody = await client.celestialBodies.create({\n  name: \"Mars\",\n});\nconsole.log(celestialBody);"
+            "source": "import Galaxy from '@scalar/galaxy';\n\nconst client = new Galaxy({\n  bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var\n  environment: 'production',\n});\n\nconst celestialBody = await client.celestialBodies.create({\n  name: 'Mars',\n});\n\nconsole.log(celestialBody);"
           }
         ]
       }
     },
     "/user/signup": {
       "post": {
-        "tags": [
-          "Authentication"
-        ],
+        "tags": ["Authentication"],
         "summary": "Create a user",
         "description": "Time to create a user account, eh?",
         "operationId": "createUser",
@@ -687,16 +665,14 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Galaxy from \"@scalar/galaxy\";\n\nconst client = new Galaxy({\n  bearerAuth: process.env[\"BEARER_AUTH\"], // defaults to the BEARER_AUTH env var\n  environment: \"production\",\n});\n\nconst user = await client.authentication.createUser();\nconsole.log(user);"
+            "source": "import Galaxy from '@scalar/galaxy';\n\nconst client = new Galaxy({\n  bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var\n  environment: 'production',\n});\n\nconst user = await client.authentication.createUser();\n\nconsole.log(user);"
           }
         ]
       }
     },
     "/auth/token": {
       "post": {
-        "tags": [
-          "Authentication"
-        ],
+        "tags": ["Authentication"],
         "summary": "Get a token",
         "description": "Yeah, this is the boring security stuff. Just get your super secret token and move on.",
         "operationId": "getToken",
@@ -764,16 +740,14 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Galaxy from \"@scalar/galaxy\";\n\nconst client = new Galaxy({\n  bearerAuth: process.env[\"BEARER_AUTH\"], // defaults to the BEARER_AUTH env var\n  environment: \"production\",\n});\n\nconst createToken = await client.authentication.createToken();\nconsole.log(createToken);"
+            "source": "import Galaxy from '@scalar/galaxy';\n\nconst client = new Galaxy({\n  bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var\n  environment: 'production',\n});\n\nconst createToken = await client.authentication.createToken();\n\nconsole.log(createToken);"
           }
         ]
       }
     },
     "/me": {
       "get": {
-        "tags": [
-          "Authentication"
-        ],
+        "tags": ["Authentication"],
         "summary": "Get authenticated user",
         "description": "Find yourself they say. That's what you can do here.",
         "operationId": "getMe",
@@ -782,9 +756,7 @@
             "basicAuth": []
           },
           {
-            "oAuth2": [
-              "read:account"
-            ]
+            "oAuth2": ["read:account"]
           },
           {
             "bearerAuth": []
@@ -842,7 +814,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Galaxy from \"@scalar/galaxy\";\n\nconst client = new Galaxy({\n  bearerAuth: process.env[\"BEARER_AUTH\"], // defaults to the BEARER_AUTH env var\n  environment: \"production\",\n});\n\nconst user = await client.authentication.listMe();\nconsole.log(user);"
+            "source": "import Galaxy from '@scalar/galaxy';\n\nconst client = new Galaxy({\n  bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var\n  environment: 'production',\n});\n\nconst user = await client.authentication.listMe();\n\nconsole.log(user);"
           }
         ]
       }
@@ -851,9 +823,7 @@
   "webhooks": {
     "newPlanet": {
       "post": {
-        "tags": [
-          "Planets"
-        ],
+        "tags": ["Planets"],
         "security": [],
         "requestBody": {
           "description": "Information about a new planet",
@@ -963,9 +933,7 @@
         "schema": {
           "type": "integer",
           "format": "int64",
-          "examples": [
-            1
-          ]
+          "examples": [1]
         }
       },
       "limit": {
@@ -1248,45 +1216,28 @@
             "type": "integer",
             "format": "int64",
             "readOnly": true,
-            "examples": [
-              1
-            ]
+            "examples": [1]
           },
           "name": {
             "type": "string",
-            "examples": [
-              "Marc",
-              "Cam",
-              "Hans"
-            ]
+            "examples": ["Marc", "Cam", "Hans"]
           }
         }
       },
       "Credentials": {
         "description": "Credentials to authenticate a user",
         "type": "object",
-        "required": [
-          "email",
-          "password"
-        ],
+        "required": ["email", "password"],
         "properties": {
           "email": {
             "type": "string",
             "format": "email",
-            "examples": [
-              "marc@scalar.com",
-              "cam@scalar.com",
-              "hans@scalar.com"
-            ]
+            "examples": ["marc@scalar.com", "cam@scalar.com", "hans@scalar.com"]
           },
           "password": {
             "type": "string",
             "writeOnly": true,
-            "examples": [
-              "i-love-scalar",
-              "i-love-oss",
-              "qwerty123"
-            ]
+            "examples": ["i-love-scalar", "i-love-oss", "qwerty123"]
           }
         }
       },
@@ -1329,10 +1280,7 @@
       "Planet": {
         "description": "A planet in the Scalar Galaxy",
         "type": "object",
-        "required": [
-          "id",
-          "name"
-        ],
+        "required": ["id", "name"],
         "additionalProperties": false,
         "xml": {
           "name": "planet"
@@ -1342,45 +1290,21 @@
             "type": "integer",
             "format": "int64",
             "readOnly": true,
-            "examples": [
-              1
-            ],
+            "examples": [1],
             "x-variable": "planetId"
           },
           "name": {
             "type": "string",
-            "examples": [
-              "Mars",
-              "Jupiter",
-              "HD 40307g"
-            ]
+            "examples": ["Mars", "Jupiter", "HD 40307g"]
           },
           "description": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "The red planet",
-              "A gas giant with a great red spot"
-            ]
+            "type": ["string", "null"],
+            "examples": ["The red planet", "A gas giant with a great red spot"]
           },
           "type": {
             "type": "string",
-            "enum": [
-              "terrestrial",
-              "gas_giant",
-              "ice_giant",
-              "dwarf",
-              "super_earth"
-            ],
-            "x-enum-varnames": [
-              "Terrestrial",
-              "GasGiant",
-              "IceGiant",
-              "Dwarf",
-              "SuperEarth"
-            ],
+            "enum": ["terrestrial", "gas_giant", "ice_giant", "dwarf", "super_earth"],
+            "x-enum-varnames": ["Terrestrial", "GasGiant", "IceGiant", "Dwarf", "SuperEarth"],
             "x-enum-descriptions": {
               "terrestrial": "Rocky planets with solid surfaces, like Earth and Mars",
               "gas_giant": "Large planets composed mainly of hydrogen and helium, like Jupiter and Saturn",
@@ -1388,9 +1312,7 @@
               "dwarf": "Small planetary bodies that don't meet full planet criteria, like Pluto",
               "super_earth": "Rocky planets larger than Earth but smaller than gas giants"
             },
-            "examples": [
-              "terrestrial"
-            ]
+            "examples": ["terrestrial"]
           },
           "habitabilityIndex": {
             "type": "number",
@@ -1398,9 +1320,7 @@
             "minimum": 0,
             "maximum": 1,
             "description": "A score from 0 to 1 indicating potential habitability",
-            "examples": [
-              0.68
-            ]
+            "examples": [0.68]
           },
           "physicalProperties": {
             "type": "object",
@@ -1416,26 +1336,20 @@
                 "format": "float",
                 "exclusiveMinimum": 0,
                 "description": "Mass in Earth masses (must be greater than 0)",
-                "examples": [
-                  0.107
-                ]
+                "examples": [0.107]
               },
               "radius": {
                 "type": "number",
                 "format": "float",
                 "exclusiveMinimum": 0,
                 "description": "Radius in Earth radii (must be greater than 0)",
-                "examples": [
-                  0.532
-                ]
+                "examples": [0.532]
               },
               "gravity": {
                 "type": "number",
                 "format": "float",
                 "description": "Surface gravity in Earth g",
-                "examples": [
-                  0.378
-                ]
+                "examples": [0.378]
               },
               "temperature": {
                 "type": "object",
@@ -1450,25 +1364,19 @@
                     "type": "number",
                     "format": "float",
                     "description": "Minimum temperature in Kelvin",
-                    "examples": [
-                      130
-                    ]
+                    "examples": [130]
                   },
                   "max": {
                     "type": "number",
                     "format": "float",
                     "description": "Maximum temperature in Kelvin",
-                    "examples": [
-                      308
-                    ]
+                    "examples": [308]
                   },
                   "average": {
                     "type": "number",
                     "format": "float",
                     "description": "Average temperature in Kelvin",
-                    "examples": [
-                      210
-                    ]
+                    "examples": [210]
                   }
                 }
               }
@@ -1487,18 +1395,13 @@
               "properties": {
                 "compound": {
                   "type": "string",
-                  "examples": [
-                    "CO2",
-                    "N2"
-                  ]
+                  "examples": ["CO2", "N2"]
                 },
                 "percentage": {
                   "type": "number",
                   "format": "float",
                   "exclusiveMaximum": 100,
-                  "examples": [
-                    95.3
-                  ]
+                  "examples": [95.3]
                 }
               }
             }
@@ -1506,18 +1409,11 @@
           "discoveredAt": {
             "type": "string",
             "format": "date-time",
-            "examples": [
-              "1610-01-07T00:00:00Z"
-            ]
+            "examples": ["1610-01-07T00:00:00Z"]
           },
           "image": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "https://cdn.scalar.com/photos/mars.jpg"
-            ]
+            "type": ["string", "null"],
+            "examples": ["https://cdn.scalar.com/photos/mars.jpg"]
           },
           "satellites": {
             "type": "array",
@@ -1533,98 +1429,63 @@
             "items": {
               "type": "string"
             },
-            "examples": [
-              [
-                "solar-system",
-                "rocky",
-                "explored"
-              ]
-            ]
+            "examples": [["solar-system", "rocky", "explored"]]
           },
           "lastUpdated": {
             "type": "string",
             "format": "date-time",
             "readOnly": true,
-            "examples": [
-              "2024-01-15T14:30:00Z"
-            ]
+            "examples": ["2024-01-15T14:30:00Z"]
           },
           "successCallbackUrl": {
             "type": "string",
             "format": "uri",
             "description": "URL which gets invoked upon a successful operation",
-            "examples": [
-              "https://example.com/webhook"
-            ]
+            "examples": ["https://example.com/webhook"]
           },
           "failureCallbackUrl": {
             "type": "string",
             "format": "uri",
             "description": "URL which gets invoked upon a failed operation",
-            "examples": [
-              "https://example.com/webhook"
-            ]
+            "examples": ["https://example.com/webhook"]
           }
         }
       },
       "Satellite": {
         "description": "Every satellite in the Scalar Galaxy",
         "type": "object",
-        "required": [
-          "name"
-        ],
+        "required": ["name"],
         "properties": {
           "id": {
             "type": "integer",
             "format": "int64",
             "readOnly": true,
-            "examples": [
-              1
-            ]
+            "examples": [1]
           },
           "name": {
             "type": "string",
-            "examples": [
-              "Phobos"
-            ]
+            "examples": ["Phobos"]
           },
           "description": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "Phobos is the larger and innermost of the two moons of Mars."
-            ]
+            "type": ["string", "null"],
+            "examples": ["Phobos is the larger and innermost of the two moons of Mars."]
           },
           "diameter": {
             "type": "number",
             "format": "float",
             "description": "Diameter in kilometers",
-            "examples": [
-              22.2
-            ]
+            "examples": [22.2]
           },
           "type": {
             "type": "string",
-            "enum": [
-              "moon",
-              "asteroid",
-              "comet"
-            ],
-            "x-enum-varnames": [
-              "Moon",
-              "Asteroid",
-              "Comet"
-            ],
+            "enum": ["moon", "asteroid", "comet"],
+            "x-enum-varnames": ["Moon", "Asteroid", "Comet"],
             "x-enum-descriptions": {
               "moon": "Natural satellites that orbit planets",
               "asteroid": "Rocky objects that orbit the sun, typically found in the asteroid belt",
               "comet": "Icy bodies that release gas when approaching the sun, creating visible tails"
             },
-            "examples": [
-              "moon"
-            ]
+            "examples": ["moon"]
           },
           "orbit": {
             "type": "object",
@@ -1636,17 +1497,13 @@
                 "type": "number",
                 "format": "float",
                 "description": "Orbital period in Earth days",
-                "examples": [
-                  0.319
-                ]
+                "examples": [0.319]
               },
               "distance": {
                 "type": "number",
                 "format": "float",
                 "description": "Average distance from the planet in kilometers",
-                "examples": [
-                  9376
-                ]
+                "examples": [9376]
               }
             }
           }
@@ -1675,32 +1532,21 @@
               "limit": {
                 "type": "integer",
                 "format": "int64",
-                "examples": [
-                  10
-                ]
+                "examples": [10]
               },
               "offset": {
                 "type": "integer",
                 "format": "int64",
-                "examples": [
-                  0
-                ]
+                "examples": [0]
               },
               "total": {
                 "type": "integer",
                 "format": "int64",
-                "examples": [
-                  100
-                ]
+                "examples": [100]
               },
               "next": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "examples": [
-                  "/planets?limit=10&offset=10"
-                ]
+                "type": ["string", "null"],
+                "examples": ["/planets?limit=10&offset=10"]
               }
             }
           }
@@ -1713,39 +1559,28 @@
         "properties": {
           "message": {
             "type": "string",
-            "examples": [
-              "Image uploaded successfully"
-            ]
+            "examples": ["Image uploaded successfully"]
           },
           "imageUrl": {
             "type": "string",
             "description": "The URL where the uploaded image can be accessed",
-            "examples": [
-              "https://cdn.scalar.com/images/8f47c132-9d1f-4f83-b5a4-91db5ee757ab.jpg"
-            ]
+            "examples": ["https://cdn.scalar.com/images/8f47c132-9d1f-4f83-b5a4-91db5ee757ab.jpg"]
           },
           "uploadedAt": {
             "type": "string",
             "format": "date-time",
             "description": "Timestamp when the image was uploaded",
-            "examples": [
-              "2024-01-15T14:30:00Z"
-            ]
+            "examples": ["2024-01-15T14:30:00Z"]
           },
           "fileSize": {
             "type": "integer",
             "description": "Size of the uploaded image in bytes",
-            "examples": [
-              1048576
-            ]
+            "examples": [1048576]
           },
           "mimeType": {
             "type": "string",
             "description": "The content type of the uploaded image",
-            "examples": [
-              "image/jpeg",
-              "image/png"
-            ]
+            "examples": ["image/jpeg", "image/png"]
           }
         }
       },
@@ -1756,28 +1591,20 @@
         "properties": {
           "type": {
             "type": "string",
-            "examples": [
-              "https://example.com/errors/bad-request"
-            ]
+            "examples": ["https://example.com/errors/bad-request"]
           },
           "title": {
             "type": "string",
-            "examples": [
-              "Bad Request"
-            ]
+            "examples": ["Bad Request"]
           },
           "status": {
             "type": "integer",
             "format": "int64",
-            "examples": [
-              400
-            ]
+            "examples": [400]
           },
           "detail": {
             "type": "string",
-            "examples": [
-              "The request was invalid."
-            ]
+            "examples": ["The request was invalid."]
           }
         }
       },
@@ -1788,28 +1615,20 @@
         "properties": {
           "type": {
             "type": "string",
-            "examples": [
-              "https://example.com/errors/forbidden"
-            ]
+            "examples": ["https://example.com/errors/forbidden"]
           },
           "title": {
             "type": "string",
-            "examples": [
-              "Forbidden"
-            ]
+            "examples": ["Forbidden"]
           },
           "status": {
             "type": "integer",
             "format": "int64",
-            "examples": [
-              403
-            ]
+            "examples": [403]
           },
           "detail": {
             "type": "string",
-            "examples": [
-              "You are not authorized to access this resource."
-            ]
+            "examples": ["You are not authorized to access this resource."]
           }
         }
       },
@@ -1820,28 +1639,20 @@
         "properties": {
           "type": {
             "type": "string",
-            "examples": [
-              "https://example.com/errors/not-found"
-            ]
+            "examples": ["https://example.com/errors/not-found"]
           },
           "title": {
             "type": "string",
-            "examples": [
-              "Not Found"
-            ]
+            "examples": ["Not Found"]
           },
           "status": {
             "type": "integer",
             "format": "int64",
-            "examples": [
-              404
-            ]
+            "examples": [404]
           },
           "detail": {
             "type": "string",
-            "examples": [
-              "The resource you are trying to access does not exist."
-            ]
+            "examples": ["The resource you are trying to access does not exist."]
           }
         }
       },
@@ -1852,28 +1663,20 @@
         "properties": {
           "type": {
             "type": "string",
-            "examples": [
-              "https://example.com/errors/not-found"
-            ]
+            "examples": ["https://example.com/errors/not-found"]
           },
           "title": {
             "type": "string",
-            "examples": [
-              "Unauthorized"
-            ]
+            "examples": ["Unauthorized"]
           },
           "status": {
             "type": "integer",
             "format": "int64",
-            "examples": [
-              401
-            ]
+            "examples": [401]
           },
           "detail": {
             "type": "string",
-            "examples": [
-              "You are not authorized to access this resource."
-            ]
+            "examples": ["You are not authorized to access this resource."]
           }
         }
       },
@@ -1884,28 +1687,20 @@
         "properties": {
           "type": {
             "type": "string",
-            "examples": [
-              "https://example.com/errors/conflict"
-            ]
+            "examples": ["https://example.com/errors/conflict"]
           },
           "title": {
             "type": "string",
-            "examples": [
-              "Conflict"
-            ]
+            "examples": ["Conflict"]
           },
           "status": {
             "type": "integer",
             "format": "int64",
-            "examples": [
-              409
-            ]
+            "examples": [409]
           },
           "detail": {
             "type": "string",
-            "examples": [
-              "The resource you are trying to access is in conflict."
-            ]
+            "examples": ["The resource you are trying to access is in conflict."]
           }
         }
       },
@@ -1916,28 +1711,20 @@
         "properties": {
           "type": {
             "type": "string",
-            "examples": [
-              "https://example.com/errors/unprocessable-entity"
-            ]
+            "examples": ["https://example.com/errors/unprocessable-entity"]
           },
           "title": {
             "type": "string",
-            "examples": [
-              "Unprocessable Entity"
-            ]
+            "examples": ["Unprocessable Entity"]
           },
           "status": {
             "type": "integer",
             "format": "int64",
-            "examples": [
-              422
-            ]
+            "examples": [422]
           },
           "detail": {
             "type": "string",
-            "examples": [
-              "The request was invalid."
-            ]
+            "examples": ["The request was invalid."]
           }
         }
       },
@@ -1948,28 +1735,20 @@
         "properties": {
           "type": {
             "type": "string",
-            "examples": [
-              "https://example.com/errors/too-many-requests"
-            ]
+            "examples": ["https://example.com/errors/too-many-requests"]
           },
           "title": {
             "type": "string",
-            "examples": [
-              "Too Many Requests"
-            ]
+            "examples": ["Too Many Requests"]
           },
           "status": {
             "type": "integer",
             "format": "int64",
-            "examples": [
-              429
-            ]
+            "examples": [429]
           },
           "detail": {
             "type": "string",
-            "examples": [
-              "Rate limit exceeded. Please try again later."
-            ]
+            "examples": ["Rate limit exceeded. Please try again later."]
           }
         }
       }

@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import { APIResource } from "../resource";
-import { APIPromise } from "../api-promise";
-import type { RequestOptions } from "../internal/request-options";
-import type * as PlanetsAPI from "./planets";
-import type * as AuthenticationAPI from "./authentication";
+import { APIResource } from '../resource';
+import { APIPromise } from '../api-promise';
+import type { RequestOptions } from '../internal/request-options';
+import type * as PlanetsAPI from './planets';
+import type * as AuthenticationAPI from './authentication';
 
 export class CelestialBodies extends APIResource {
   /**
@@ -17,12 +17,12 @@ export class CelestialBodies extends APIResource {
    * @example
    * ```ts
    * const celestialBody = await client.celestialBodies.create({
-   *   name: "Mars",
+   *   name: 'Mars',
    * });
    * ```
    */
   create(body: CelestialBodyCreateParams, options?: RequestOptions): APIPromise<CelestialBody> {
-    return this._client.post("/celestial-bodies", { body, ...options });
+    return this._client.post('/celestial-bodies', { body, ...options });
   }
 }
 
@@ -44,7 +44,7 @@ export namespace CelestialBody {
      * @format float
      */
     diameter?: number;
-    type?: "moon" | "asteroid" | "comet";
+    type?: 'moon' | 'asteroid' | 'comet';
     orbit?: unknown;
   }
 }
@@ -60,13 +60,10 @@ export declare namespace CelestialBodyCreateParams {
      * @format float
      */
     diameter?: number;
-    type?: "moon" | "asteroid" | "comet";
+    type?: 'moon' | 'asteroid' | 'comet';
     orbit?: unknown;
   }
 }
 export declare namespace CelestialBodies {
-  export {
-    type CelestialBody as CelestialBody,
-    type CelestialBodyCreateParams as CelestialBodyCreateParams,
-  };
+  export { type CelestialBody as CelestialBody, type CelestialBodyCreateParams as CelestialBodyCreateParams };
 }

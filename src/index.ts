@@ -4,7 +4,7 @@ export { Galaxy as default } from './client.js';
 
 export { type Uploadable, toFile } from './core/uploads';
 export { APIPromise } from './api-promise';
-export { Galaxy, type ClientOptions } from './client.js';
+export { Galaxy, type ClientOptions, type AuthTokenProvider } from './client.js';
 export {
   GalaxyError,
   APIError,

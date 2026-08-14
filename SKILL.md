@@ -1,22 +1,22 @@
 ---
 name: scalar-galaxy-typescript-sdk
-description: "TypeScript SDK for Scalar Galaxy API. Use when writing TypeScript code that calls Scalar Galaxy API with the @scalar/galaxy package: installing it, constructing and authenticating the client, and calling API operations."
+description: "TypeScript SDK for Scalar Galaxy API. Use when writing TypeScript code that calls Scalar Galaxy API with the @scalar/galaxy-node package: installing it, constructing and authenticating the client, and calling API operations."
 ---
 
 # Scalar Galaxy TypeScript SDK
 
-Generated TypeScript client for Scalar Galaxy API, published as `@scalar/galaxy`. Use the generated client instead of hand-writing HTTP requests.
+Generated TypeScript client for Scalar Galaxy API, published as `@scalar/galaxy-node`. Use the generated client instead of hand-writing HTTP requests.
 
 ## Install
 
 ```sh
-npm install @scalar/galaxy
+npm install @scalar/galaxy-node
 ```
 
 ## Client setup and authentication
 
 ```ts
-import Galaxy from '@scalar/galaxy';
+import Galaxy from '@scalar/galaxy-node';
 
 const client = new Galaxy({
   bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var
@@ -38,7 +38,7 @@ Provide credentials using the options below. Environment variables are read auto
 ## Calling operations
 
 ```ts
-import Galaxy from '@scalar/galaxy';
+import Galaxy from '@scalar/galaxy-node';
 
 const client = new Galaxy({
   bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var
@@ -60,7 +60,7 @@ Method names, parameter shapes, and response types are generated from the API de
 Non-success responses throw generated API errors. Error objects expose status, headers, response body, and request metadata where the target runtime supports it.
 
 ```ts
-import { APIError } from '@scalar/galaxy';
+import { APIError } from '@scalar/galaxy-node';
 
 try {
   const listAllData = await client.planets.listAllData({

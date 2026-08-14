@@ -1,5 +1,5 @@
 {
-  "name": "@scalar/galaxy",
+  "name": "@scalar/galaxy-node",
   "version": "0.2.1",
   "description": "The Scalar Galaxy is an example OpenAPI document to test OpenAPI tools and libraries. It's a fictional universe with fictional planets and fictional data.",
   "author": "Scalar Galaxy",

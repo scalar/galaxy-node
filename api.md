@@ -21,7 +21,7 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 ## Setup
 
 ```ts
-import Galaxy from '@scalar/galaxy';
+import Galaxy from '@scalar/galaxy-node';
 
 const client = new Galaxy({
   bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var

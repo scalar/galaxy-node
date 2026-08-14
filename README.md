@@ -25,7 +25,7 @@ The full API of this library can be found in [api.md](./api.md).
 ## Installation
 
 ```sh
-npm install @scalar/galaxy
+npm install @scalar/galaxy-node
 ```
 
 <br />
@@ -33,7 +33,7 @@ npm install @scalar/galaxy
 ## Usage
 
 ```ts
-import Galaxy from '@scalar/galaxy';
+import Galaxy from '@scalar/galaxy-node';
 
 const client = new Galaxy({
   bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var
@@ -86,7 +86,7 @@ Declared schemes:
 Non-success responses throw generated API errors. Error objects expose status, headers, response body, and request metadata where the target runtime supports it.
 
 ```ts
-import { APIError } from '@scalar/galaxy';
+import { APIError } from '@scalar/galaxy-node';
 
 try {
   const listAllData = await client.planets.listAllData({
@@ -110,7 +110,7 @@ Documented error statuses: `400`, `401`, `403`, `404`, `409`, `422`, `429`.
 Configure the generated client by setting any of these options when you create it.
 
 ```ts
-import Galaxy from '@scalar/galaxy';
+import Galaxy from '@scalar/galaxy-node';
 
 const client = new Galaxy({
   timeout: 60000,

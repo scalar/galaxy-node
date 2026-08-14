@@ -20,7 +20,7 @@ import {
 } from './internal/utils/log';
 export type { Logger, LogLevel } from './internal/utils/log';
 import type { RequestInit, RequestInfo, BodyInit, Fetch } from './internal/builtin-types';
-import { buildHeaders, type HeadersLike } from './internal/headers';
+import { buildHeaders, type HeadersLike, type NullableHeaders } from './internal/headers';
 import type { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import type { HTTPMethod, FinalizedRequestInit, MergedRequestInit, PromiseOrValue } from './internal/types';
 import { stringifyQuery } from './internal/utils/query';
@@ -190,12 +190,12 @@ export type GalaxyOptions = ClientOptions;
  * API Client for interfacing with the ScalarGalaxy API.
  */
 export class Galaxy {
-  bearerAuth: string | AuthTokenProvider | undefined;
-  basicAuthUsername: string | AuthTokenProvider | undefined;
-  basicAuthPassword: string | AuthTokenProvider | undefined;
-  apiKeyHeader: string | AuthTokenProvider | undefined;
-  apiKeyQuery: string | AuthTokenProvider | undefined;
-  apiKeyCookie: string | AuthTokenProvider | undefined;
+  bearerAuth: string | AuthTokenProvider;
+  basicAuthUsername: string | AuthTokenProvider;
+  basicAuthPassword: string | AuthTokenProvider;
+  apiKeyHeader: string | AuthTokenProvider;
+  apiKeyQuery: string | AuthTokenProvider;
+  apiKeyCookie: string | AuthTokenProvider;
   oAuth2: string | AuthTokenProvider | undefined;
   openIDConnect: string | AuthTokenProvider | undefined;
   webhookSecret: string | null;
@@ -247,6 +247,37 @@ export class Galaxy {
     webhookSecret = readEnv('SCALAR_WEBHOOK_SECRET') ?? null,
     ...opts
   }: ClientOptions = {}) {
+    if (bearerAuth === undefined) {
+      throw new Errors.GalaxyError(
+        "The BEARER_AUTH environment variable is missing or empty; either provide it, or instantiate the Galaxy client with an bearerAuth option, like new Galaxy({ bearerAuth: 'My Bearer Auth' }).",
+      );
+    }
+    if (basicAuthUsername === undefined) {
+      throw new Errors.GalaxyError(
+        "The BASIC_AUTH_USERNAME environment variable is missing or empty; either provide it, or instantiate the Galaxy client with an basicAuthUsername option, like new Galaxy({ basicAuthUsername: 'My Basic Auth Username' }).",
+      );
+    }
+    if (basicAuthPassword === undefined) {
+      throw new Errors.GalaxyError(
+        "The BASIC_AUTH_PASSWORD environment variable is missing or empty; either provide it, or instantiate the Galaxy client with an basicAuthPassword option, like new Galaxy({ basicAuthPassword: 'My Basic Auth Password' }).",
+      );
+    }
+    if (apiKeyHeader === undefined) {
+      throw new Errors.GalaxyError(
+        "The API_KEY_HEADER environment variable is missing or empty; either provide it, or instantiate the Galaxy client with an apiKeyHeader option, like new Galaxy({ apiKeyHeader: 'My API Key Header' }).",
+      );
+    }
+    if (apiKeyQuery === undefined) {
+      throw new Errors.GalaxyError(
+        "The API_KEY_QUERY environment variable is missing or empty; either provide it, or instantiate the Galaxy client with an apiKeyQuery option, like new Galaxy({ apiKeyQuery: 'My API Key Query' }).",
+      );
+    }
+    if (apiKeyCookie === undefined) {
+      throw new Errors.GalaxyError(
+        "The API_KEY_COOKIE environment variable is missing or empty; either provide it, or instantiate the Galaxy client with an apiKeyCookie option, like new Galaxy({ apiKeyCookie: 'My API Key Cookie' }).",
+      );
+    }
+
     const options: ClientOptions = {
       bearerAuth,
       basicAuthUsername,
@@ -752,7 +783,16 @@ export class Galaxy {
     if ('timeout' in options) validatePositiveInteger('timeout', options.timeout);
     options.timeout = options.timeout ?? this.timeout;
     const { bodyHeaders, body } = this.buildBody({ options });
-    const reqHeaders = await this.buildHeaders({ options, method, bodyHeaders, retryCount, url });
+    // Headers read the caller's own options, not the copy defaulted above: `X-Scalar-Timeout`
+    // reports an explicit per-request timeout, and the idempotency key written back here has to
+    // land where the retry can see it.
+    const reqHeaders = await this.buildHeaders({
+      options: inputOptions,
+      method,
+      bodyHeaders,
+      retryCount,
+      url,
+    });
 
     const req: FinalizedRequestInit = {
       method,
@@ -867,7 +907,7 @@ export class Galaxy {
     }
   }
 
-  private validateAuth(url: string, headers: Headers, options: FinalRequestOptions): void {
+  protected validateAuth(url: string, headers: Headers, options: FinalRequestOptions): void {
     if (headers.has('Authorization')) return;
     if (headerExplicitlyOmitted(options.headers, 'Authorization')) return;
     if (headers.has('X-API-Key')) return;
@@ -876,8 +916,8 @@ export class Galaxy {
     if (cookieHeaderHas(headers.get('Cookie'), 'api_key')) return;
     throw new Errors.AuthenticationError(
       401,
-      {},
-      'Could not resolve authentication method. Expected Authorization or X-API-Key or query api_key or cookie api_key to be set.',
+      undefined,
+      'Could not resolve authentication method. Expected either bearerAuth, both basicAuthUsername and basicAuthPassword, oAuth2, openIDConnect, apiKeyHeader, apiKeyQuery or apiKeyCookie to be set. Or for one of the "Authorization" or "X-API-Key" headers to be explicitly omitted',
       headers,
     );
   }
@@ -907,8 +947,57 @@ export class Galaxy {
     return {};
   }
 
-  protected async authHeaders(options: FinalRequestOptions): Promise<HeadersLike | undefined> {
-    return buildHeaders([await this.authHeadersAsync()]);
+  protected async authHeaders(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    return buildHeaders([
+      await this.bearerAuth2(opts),
+      await this.apiKeyHeaderAuth(opts),
+      await this.oAuth2Auth(opts),
+      await this.openIDConnectAuth(opts),
+      await this.basicAuth(opts),
+    ]);
+  }
+
+  protected async bearerAuth2(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    const bearerAuth = await this.resolveAuthOption('bearerAuth', this.bearerAuth);
+    if (bearerAuth == null) {
+      return undefined;
+    }
+    return buildHeaders([{ Authorization: `Bearer ${bearerAuth}` }]);
+  }
+
+  protected async apiKeyHeaderAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    const apiKeyHeader = await this.resolveAuthOption('apiKeyHeader', this.apiKeyHeader);
+    if (apiKeyHeader == null) {
+      return undefined;
+    }
+    return buildHeaders([{ 'X-API-Key': apiKeyHeader }]);
+  }
+
+  protected async oAuth2Auth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    const oAuth2 = await this.resolveAuthOption('oAuth2', this.oAuth2);
+    if (oAuth2 == null) {
+      return undefined;
+    }
+    return buildHeaders([{ Authorization: `Bearer ${oAuth2}` }]);
+  }
+
+  protected async openIDConnectAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    const openIDConnect = await this.resolveAuthOption('openIDConnect', this.openIDConnect);
+    if (openIDConnect == null) {
+      return undefined;
+    }
+    return buildHeaders([{ Authorization: `Bearer ${openIDConnect}` }]);
+  }
+
+  protected async basicAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    const basicAuthUsername = await this.resolveAuthOption('basicAuthUsername', this.basicAuthUsername);
+    const basicAuthPassword = await this.resolveAuthOption('basicAuthPassword', this.basicAuthPassword);
+    if (basicAuthUsername == null || basicAuthPassword == null) {
+      return undefined;
+    }
+    return buildHeaders([
+      { Authorization: `Basic ${toBase64(`${basicAuthUsername}:${basicAuthPassword}`)}` },
+    ]);
   }
 
   private async authQueryAsync(): Promise<Record<string, string>> {
@@ -923,23 +1012,6 @@ export class Galaxy {
     const apiKeyCookie = await this.resolveAuthOption('apiKeyCookie', this.apiKeyCookie);
     if (apiKeyCookie) cookies['api_key'] = apiKeyCookie;
     return cookies;
-  }
-
-  private async authHeadersAsync(): Promise<Record<string, string>> {
-    const headers: Record<string, string> = {};
-    const bearerAuth = await this.resolveAuthOption('bearerAuth', this.bearerAuth);
-    if (bearerAuth) headers['Authorization'] = `Bearer ${bearerAuth}`;
-    const apiKeyHeader = await this.resolveAuthOption('apiKeyHeader', this.apiKeyHeader);
-    if (apiKeyHeader) headers['X-API-Key'] = apiKeyHeader;
-    const oAuth2 = await this.resolveAuthOption('oAuth2', this.oAuth2);
-    if (oAuth2) headers['Authorization'] = `Bearer ${oAuth2}`;
-    const openIDConnect = await this.resolveAuthOption('openIDConnect', this.openIDConnect);
-    if (openIDConnect) headers['Authorization'] = `Bearer ${openIDConnect}`;
-    const basicAuthUsername = await this.resolveAuthOption('basicAuthUsername', this.basicAuthUsername);
-    const basicAuthPassword = await this.resolveAuthOption('basicAuthPassword', this.basicAuthPassword);
-    if (basicAuthUsername != null && basicAuthPassword != null)
-      headers['Authorization'] = `Basic ${toBase64(`${basicAuthUsername}:${basicAuthPassword}`)}`;
-    return headers;
   }
 
   private async resolveAuthOption(

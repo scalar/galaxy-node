@@ -8,36 +8,40 @@ export class Authentication extends APIResource {
   /**
    * Time to create a user account, eh?
    *
-   * @param {AuthenticationCreateUserParams} [body] - The request body to send.
+   * @param {AuthenticationCreateUserParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<User>} User account created successfully
    *
    * @example
    * ```ts
-   * const user = await client.authentication.createUser();
+   * const user = await client.authentication.createUser({
+   *   name: 'Marc',
+   *   email: 'marc@scalar.com',
+   *   password: 'i-love-scalar',
+   * });
    * ```
    */
-  createUser(
-    body: AuthenticationCreateUserParams | null | undefined = undefined,
-    options?: RequestOptions,
-  ): APIPromise<User> {
+  createUser(body: AuthenticationCreateUserParams, options?: RequestOptions): APIPromise<User> {
     return this._client.post('/user/signup', { body, ...options });
   }
 
   /**
    * Yeah, this is the boring security stuff. Just get your super secret token and move on.
    *
-   * @param {AuthenticationCreateTokenParams} [body] - The request body to send.
+   * @param {AuthenticationCreateTokenParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<AuthenticationCreateTokenResponse>} Token Created
    *
    * @example
    * ```ts
-   * const createToken = await client.authentication.createToken();
+   * const createToken = await client.authentication.createToken({
+   *   email: 'marc@scalar.com',
+   *   password: 'i-love-scalar',
+   * });
    * ```
    */
   createToken(
-    body: AuthenticationCreateTokenParams | null | undefined = undefined,
+    body: AuthenticationCreateTokenParams,
     options?: RequestOptions,
   ): APIPromise<AuthenticationCreateTokenResponse> {
     return this._client.post('/auth/token', { body, ...options });

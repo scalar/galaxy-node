@@ -57,7 +57,9 @@ Time to play god and create a new planet. What do you think? Ah, don't think too
 | Response | [`Planet`](./src/resources/planets.ts) |
 
 ```ts
-const planet = await client.planets.create();
+const planet = await client.planets.create({
+  name: 'Mars',
+});
 ```
 
 ### Get a planet
@@ -82,7 +84,9 @@ Sometimes you make mistakes, that's fine. No worries, you can update all planets
 | Response | [`Planet`](./src/resources/planets.ts) |
 
 ```ts
-const planet = await client.planets.update(1);
+const planet = await client.planets.update(1, {
+  name: 'Mars',
+});
 ```
 
 ### Delete a planet
@@ -135,7 +139,11 @@ Time to create a user account, eh?
 | Response | [`User`](./src/resources/authentication.ts) |
 
 ```ts
-const user = await client.authentication.createUser();
+const user = await client.authentication.createUser({
+  name: 'Marc',
+  email: 'marc@scalar.com',
+  password: 'i-love-scalar',
+});
 ```
 
 ### Get a token
@@ -148,7 +156,10 @@ Yeah, this is the boring security stuff. Just get your super secret token and mo
 | Response | [`AuthenticationCreateTokenResponse`](./src/resources/authentication.ts) |
 
 ```ts
-const createToken = await client.authentication.createToken();
+const createToken = await client.authentication.createToken({
+  email: 'marc@scalar.com',
+  password: 'i-love-scalar',
+});
 ```
 
 ### Get authenticated user

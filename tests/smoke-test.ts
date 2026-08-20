@@ -11,9 +11,9 @@
 //     printing a table. The generator uses this to collect per-operation results.
 import { writeFileSync } from 'node:fs';
 
-// The default export is the client class. The client reads auth and the base URL from the
+// The package exports the client class. The client reads auth and the base URL from the
 // environment, so it needs no constructor options to point at a server.
-import Galaxy from '@scalar/galaxy';
+import Galaxy from '@scalar/galaxy-node';
 
 // One shared client runs every case.
 const client = new Galaxy();
@@ -49,7 +49,9 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/planets',
     run: async () => {
-      const planet = await client.planets.create();
+      const planet = await client.planets.create({
+        name: 'Mars',
+      });
     },
   },
 
@@ -67,7 +69,9 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'PUT',
     path: '/planets/{planetId}',
     run: async () => {
-      const planet = await client.planets.update(1);
+      const planet = await client.planets.update(1, {
+        name: 'Mars',
+      });
     },
   },
 
@@ -105,7 +109,11 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/user/signup',
     run: async () => {
-      const user = await client.authentication.createUser();
+      const user = await client.authentication.createUser({
+        name: 'Marc',
+        email: 'marc@scalar.com',
+        password: 'i-love-scalar',
+      });
     },
   },
 
@@ -114,7 +122,10 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/auth/token',
     run: async () => {
-      const createToken = await client.authentication.createToken();
+      const createToken = await client.authentication.createToken({
+        email: 'marc@scalar.com',
+        password: 'i-love-scalar',
+      });
     },
   },
 

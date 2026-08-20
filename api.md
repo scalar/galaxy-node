@@ -21,7 +21,7 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 ## Setup
 
 ```ts
-import Galaxy from '@scalar/galaxy';
+import Galaxy from '@scalar/galaxy-node';
 
 const client = new Galaxy({
   bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var
@@ -30,6 +30,8 @@ const client = new Galaxy({
 ```
 
 ## `Planets`
+
+Everything about planets
 
 ### Get all planets
 
@@ -57,7 +59,9 @@ Time to play god and create a new planet. What do you think? Ah, don't think too
 | Response | [`Planet`](./src/resources/planets.ts) |
 
 ```ts
-const planet = await client.planets.create();
+const planet = await client.planets.create({
+  name: 'Mars',
+});
 ```
 
 ### Get a planet
@@ -82,7 +86,9 @@ Sometimes you make mistakes, that's fine. No worries, you can update all planets
 | Response | [`Planet`](./src/resources/planets.ts) |
 
 ```ts
-const planet = await client.planets.update(1);
+const planet = await client.planets.update(1, {
+  name: 'Mars',
+});
 ```
 
 ### Delete a planet
@@ -108,6 +114,8 @@ const uploadImage = await client.planets.uploadImage(1);
 
 ## `CelestialBodies`
 
+Celestial bodies are the planets and satellites in the Scalar Galaxy.
+
 ### Create a celestial body
 
 Stars, moons, comets, the occasional rogue asteroid — if it glows or drifts through the void, you can add it here.
@@ -125,6 +133,8 @@ const celestialBody = await client.celestialBodies.create({
 
 ## `Authentication`
 
+Some endpoints are public, but some require authentication. We provide all the required endpoints to create an account and authorize yourself.
+
 ### Create a user
 
 Time to create a user account, eh?
@@ -135,7 +145,11 @@ Time to create a user account, eh?
 | Response | [`User`](./src/resources/authentication.ts) |
 
 ```ts
-const user = await client.authentication.createUser();
+const user = await client.authentication.createUser({
+  name: 'Marc',
+  email: 'marc@scalar.com',
+  password: 'i-love-scalar',
+});
 ```
 
 ### Get a token
@@ -148,7 +162,10 @@ Yeah, this is the boring security stuff. Just get your super secret token and mo
 | Response | [`AuthenticationCreateTokenResponse`](./src/resources/authentication.ts) |
 
 ```ts
-const createToken = await client.authentication.createToken();
+const createToken = await client.authentication.createToken({
+  email: 'marc@scalar.com',
+  password: 'i-love-scalar',
+});
 ```
 
 ### Get authenticated user

@@ -35,19 +35,18 @@ export class Planets extends APIResource {
   /**
    * Time to play god and create a new planet. What do you think? Ah, don't think too much. What could go wrong anyway?
    *
-   * @param {PlanetCreateParams} [body] - The request body to send.
+   * @param {PlanetCreateParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<Planet>} Created
    *
    * @example
    * ```ts
-   * const planet = await client.planets.create();
+   * const planet = await client.planets.create({
+   *   name: 'Mars',
+   * });
    * ```
    */
-  create(
-    body: PlanetCreateParams | null | undefined = undefined,
-    options?: RequestOptions,
-  ): APIPromise<Planet> {
+  create(body: PlanetCreateParams, options?: RequestOptions): APIPromise<Planet> {
     return this._client.post('/planets', { body, ...options });
   }
 
@@ -71,20 +70,18 @@ export class Planets extends APIResource {
    * Sometimes you make mistakes, that's fine. No worries, you can update all planets.
    *
    * @param {number} planetID - The ID of the planet to get
-   * @param {PlanetUpdateParams} [body] - The request body to send.
+   * @param {PlanetUpdateParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<Planet>} Planet updated successfully
    *
    * @example
    * ```ts
-   * const planet = await client.planets.update(1);
+   * const planet = await client.planets.update(1, {
+   *   name: 'Mars',
+   * });
    * ```
    */
-  update(
-    planetID: number,
-    body: PlanetUpdateParams | null | undefined = undefined,
-    options?: RequestOptions,
-  ): APIPromise<Planet> {
+  update(planetID: number, body: PlanetUpdateParams, options?: RequestOptions): APIPromise<Planet> {
     return this._client.put(__scalarPath`/planets/${planetID}`, { body, ...options });
   }
 

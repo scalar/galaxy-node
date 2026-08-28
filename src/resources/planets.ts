@@ -19,7 +19,7 @@ export class Planets extends APIResource {
    *
    * @example
    * ```ts
-   * const listAllData = await client.planets.listAllData({
+   * const planet = await client.planets.listAllData({
    *   limit: 10,
    *   offset: 0,
    * });
@@ -108,20 +108,20 @@ export class Planets extends APIResource {
    * Got a crazy good photo of a planet? Share it with the world!
    *
    * @param {number} planetID - The ID of the planet to get
-   * @param {PlanetUploadImageParams} [body] - The request body to send.
+   * @param {PlanetDelteImageParams} [body] - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PlanetUploadImageResponse>} Image uploaded
+   * @returns {APIPromise<PlanetDelteImageResponse>} Image uploaded
    *
    * @example
    * ```ts
-   * const uploadImage = await client.planets.uploadImage(1);
+   * const planet = await client.planets.delteImage(1);
    * ```
    */
-  uploadImage(
+  delteImage(
     planetID: number,
-    body: PlanetUploadImageParams | null | undefined = {},
+    body: PlanetDelteImageParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<PlanetUploadImageResponse> {
+  ): APIPromise<PlanetDelteImageResponse> {
     return this._client.post(
       __scalarPath`/planets/${planetID}/image`,
       multipartFormRequestOptions({ body, ...options }, this._client),
@@ -466,7 +466,7 @@ export namespace PlanetUpdateParams {
   }
 }
 
-export interface PlanetUploadImageParams {
+export interface PlanetDelteImageParams {
   /**
    * The image file to upload
    * @format binary
@@ -474,7 +474,7 @@ export interface PlanetUploadImageParams {
   image?: Uploadable;
 }
 
-export interface PlanetUploadImageResponse {
+export interface PlanetDelteImageResponse {
   message?: string;
   /**
    * The URL where the uploaded image can be accessed
@@ -498,10 +498,10 @@ export declare namespace Planets {
   export {
     type Planet as Planet,
     type PlanetListAllDataResponse as PlanetListAllDataResponse,
-    type PlanetUploadImageResponse as PlanetUploadImageResponse,
+    type PlanetDelteImageResponse as PlanetDelteImageResponse,
     type PlanetListAllDataParams as PlanetListAllDataParams,
     type PlanetCreateParams as PlanetCreateParams,
     type PlanetUpdateParams as PlanetUpdateParams,
-    type PlanetUploadImageParams as PlanetUploadImageParams,
+    type PlanetDelteImageParams as PlanetDelteImageParams,
   };
 }

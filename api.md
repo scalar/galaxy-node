@@ -43,7 +43,7 @@ It's easy to say you know them all, but do you really? Retrieve all the planets 
 | Response | [`PlanetListAllDataResponse`](./src/resources/planets.ts) |
 
 ```ts
-const listAllData = await client.planets.listAllData({
+const planet = await client.planets.listAllData({
   limit: 10,
   offset: 0,
 });
@@ -105,11 +105,11 @@ Got a crazy good photo of a planet? Share it with the world!
 
 | Direction | Type |
 | --- | --- |
-| Request | [`PlanetUploadImageParams`](./src/resources/planets.ts) |
-| Response | [`PlanetUploadImageResponse`](./src/resources/planets.ts) |
+| Request | [`PlanetDelteImageParams`](./src/resources/planets.ts) |
+| Response | [`PlanetDelteImageResponse`](./src/resources/planets.ts) |
 
 ```ts
-const uploadImage = await client.planets.uploadImage(1);
+const planet = await client.planets.delteImage(1);
 ```
 
 ## `CelestialBodies`
@@ -162,7 +162,7 @@ Yeah, this is the boring security stuff. Just get your super secret token and mo
 | Response | [`AuthenticationCreateTokenResponse`](./src/resources/authentication.ts) |
 
 ```ts
-const createToken = await client.authentication.createToken({
+const authentication = await client.authentication.createToken({
   email: 'marc@scalar.com',
   password: 'i-love-scalar',
 });

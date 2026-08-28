@@ -30,11 +30,11 @@ import {
   Planets,
   type Planet,
   type PlanetListAllDataResponse,
-  type PlanetUploadImageResponse,
+  type PlanetDelteImageResponse,
   type PlanetListAllDataParams,
   type PlanetCreateParams,
   type PlanetUpdateParams,
-  type PlanetUploadImageParams,
+  type PlanetDelteImageParams,
 } from './resources/planets';
 import {
   CelestialBodies,
@@ -55,7 +55,7 @@ export type AuthTokenProvider = () => string | Promise<string>;
 
 const environments = {
   production: 'https://galaxy.scalar.com',
-  responds_with_your_request_data: '{protocol}://void.scalar.com/{path}',
+  void: 'https://void.scalar.com/',
 };
 type Environment = keyof typeof environments;
 
@@ -110,7 +110,7 @@ export interface ClientOptions {
    *
    * Each environment maps to a different base URL:
    * - `production` corresponds to `https://galaxy.scalar.com`
-   * - `responds_with_your_request_data` corresponds to `{protocol}://void.scalar.com/{path}`
+   * - `void` corresponds to `https://void.scalar.com/`
    */
   environment?: Environment | undefined;
 
@@ -1071,11 +1071,11 @@ export declare namespace Galaxy {
     Planets as Planets,
     type Planet as Planet,
     type PlanetListAllDataResponse as PlanetListAllDataResponse,
-    type PlanetUploadImageResponse as PlanetUploadImageResponse,
+    type PlanetDelteImageResponse as PlanetDelteImageResponse,
     type PlanetListAllDataParams as PlanetListAllDataParams,
     type PlanetCreateParams as PlanetCreateParams,
     type PlanetUpdateParams as PlanetUpdateParams,
-    type PlanetUploadImageParams as PlanetUploadImageParams,
+    type PlanetDelteImageParams as PlanetDelteImageParams,
   };
 
   export {

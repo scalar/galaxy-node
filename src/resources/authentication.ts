@@ -34,7 +34,7 @@ export class Authentication extends APIResource {
    *
    * @example
    * ```ts
-   * const createToken = await client.authentication.createToken({
+   * const authentication = await client.authentication.createToken({
    *   email: 'marc@scalar.com',
    *   password: 'i-love-scalar',
    * });

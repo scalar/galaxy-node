@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.3.0](https://github.com/scalar/galaxy-node/compare/v0.2.2...v0.3.0) (2026-08-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** Removed environment `responds_with_your_request_data`.
+* **api:** 3 breaking changes to the SDK surface.
+    - Removed operation `planets.uploadImage` (`POST /planets/{planetId}/image`).
+    - Removed schema `UploadImageResponseHeaders`.
+    - Removed schema `UploadImageStatus400ResponseHeaders`.
+
+### Features
+
+* **api:** remove operation planets.uploadImage (+6 more changes) ([ecceda0](https://github.com/scalar/galaxy-node/commit/ecceda0f90fbcb7ae6326853f987a1587f9c2519))
+* **api:** update SDK surface (2 changes) ([cf5bbda](https://github.com/scalar/galaxy-node/commit/cf5bbdabb2ed1743e82e76bb21245754bb16bfe2))
+
 ## [0.2.2](https://github.com/scalar/galaxy-node/compare/v0.2.1...v0.2.2) (2026-08-20)
 
 

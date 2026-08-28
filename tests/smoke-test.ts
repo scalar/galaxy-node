@@ -23,21 +23,30 @@ type SmokeResult = {
   operation: string;
   method: string;
   path: string;
+  label?: string;
   status: 'passed' | 'failed';
   durationMs: number;
   error?: string;
 };
 
-// One entry per generated operation. `run` performs the real SDK call; the other fields are
-// metadata used for filtering and reporting. This list is generated, so it stays in sync with
-// the SDK surface.
-const cases: { operation: string; method: string; path: string; run: () => Promise<unknown> }[] = [
+// One or two entries per generated operation: the first passes only the arguments the method
+// requires, the second also fills every optional parameter and body property. `label` says which
+// is which, and is absent when the operation has no optional argument and so has only one case.
+// `run` performs the real SDK call; the other fields are metadata used for filtering and
+// reporting. This list is generated, so it stays in sync with the SDK surface.
+const cases: {
+  operation: string;
+  method: string;
+  path: string;
+  label?: string;
+  run: () => Promise<unknown>;
+}[] = [
   {
     operation: 'listAllData',
     method: 'GET',
     path: '/planets',
     run: async () => {
-      const listAllData = await client.planets.listAllData({
+      const planet = await client.planets.listAllData({
         limit: 10,
         offset: 0,
       });
@@ -48,9 +57,34 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'create',
     method: 'POST',
     path: '/planets',
+    label: 'required params',
     run: async () => {
       const planet = await client.planets.create({
         name: 'Mars',
+      });
+    },
+  },
+
+  {
+    operation: 'create',
+    method: 'POST',
+    path: '/planets',
+    label: 'all params',
+    run: async () => {
+      const planet = await client.planets.create({
+        name: 'Mars',
+        description: 'The red planet',
+        type: 'terrestrial',
+        habitabilityIndex: 0.68,
+        physicalProperties: {},
+        atmosphere: [],
+        discoveredAt: '1610-01-07T00:00:00Z',
+        image: 'https://cdn.scalar.com/photos/mars.jpg',
+        satellites: [],
+        creator: {},
+        tags: [],
+        successCallbackUrl: 'https://example.com/webhook',
+        failureCallbackUrl: 'https://example.com/webhook',
       });
     },
   },
@@ -68,9 +102,34 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'update',
     method: 'PUT',
     path: '/planets/{planetId}',
+    label: 'required params',
     run: async () => {
       const planet = await client.planets.update(1, {
         name: 'Mars',
+      });
+    },
+  },
+
+  {
+    operation: 'update',
+    method: 'PUT',
+    path: '/planets/{planetId}',
+    label: 'all params',
+    run: async () => {
+      const planet = await client.planets.update(1, {
+        name: 'Mars',
+        description: 'The red planet',
+        type: 'terrestrial',
+        habitabilityIndex: 0.68,
+        physicalProperties: {},
+        atmosphere: [],
+        discoveredAt: '1610-01-07T00:00:00Z',
+        image: 'https://cdn.scalar.com/photos/mars.jpg',
+        satellites: [],
+        creator: {},
+        tags: [],
+        successCallbackUrl: 'https://example.com/webhook',
+        failureCallbackUrl: 'https://example.com/webhook',
       });
     },
   },
@@ -85,11 +144,24 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   },
 
   {
-    operation: 'uploadImage',
+    operation: 'delteImage',
     method: 'POST',
     path: '/planets/{planetId}/image',
+    label: 'required params',
     run: async () => {
-      const uploadImage = await client.planets.uploadImage(1);
+      const planet = await client.planets.delteImage(1);
+    },
+  },
+
+  {
+    operation: 'delteImage',
+    method: 'POST',
+    path: '/planets/{planetId}/image',
+    label: 'all params',
+    run: async () => {
+      const planet = await client.planets.delteImage(1, {
+        image: '@mars.jpg',
+      });
     },
   },
 
@@ -97,9 +169,34 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'create',
     method: 'POST',
     path: '/celestial-bodies',
+    label: 'required params',
     run: async () => {
       const celestialBody = await client.celestialBodies.create({
         name: 'Mars',
+      });
+    },
+  },
+
+  {
+    operation: 'create',
+    method: 'POST',
+    path: '/celestial-bodies',
+    label: 'all params',
+    run: async () => {
+      const celestialBody = await client.celestialBodies.create({
+        name: 'Mars',
+        description: 'The red planet',
+        type: 'terrestrial',
+        habitabilityIndex: 0.68,
+        physicalProperties: {},
+        atmosphere: [],
+        discoveredAt: '1610-01-07T00:00:00Z',
+        image: 'https://cdn.scalar.com/photos/mars.jpg',
+        satellites: [],
+        creator: {},
+        tags: [],
+        successCallbackUrl: 'https://example.com/webhook',
+        failureCallbackUrl: 'https://example.com/webhook',
       });
     },
   },
@@ -122,7 +219,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/auth/token',
     run: async () => {
-      const createToken = await client.authentication.createToken({
+      const authentication = await client.authentication.createToken({
         email: 'marc@scalar.com',
         password: 'i-love-scalar',
       });
@@ -161,26 +258,21 @@ const main = async (): Promise<void> => {
   const settled = await Promise.allSettled(
     selected.map(async (testCase): Promise<SmokeResult> => {
       const startedAt = Date.now();
+      // `label` distinguishes the required-params run from the all-params run of the same
+      // operation; it is omitted entirely when the operation contributed only one case.
+      const identity = {
+        operation: testCase.operation,
+        method: testCase.method,
+        path: testCase.path,
+        ...(testCase.label ? { label: testCase.label } : {}),
+      };
       try {
         await testCase.run();
-        return {
-          operation: testCase.operation,
-          method: testCase.method,
-          path: testCase.path,
-          status: 'passed',
-          durationMs: Date.now() - startedAt,
-        };
+        return { ...identity, status: 'passed', durationMs: Date.now() - startedAt };
       } catch (error) {
         // Prefer the stack so a failure points at the failing SDK call; fall back to the message.
         const message = error instanceof Error ? (error.stack ?? error.message) : String(error);
-        return {
-          operation: testCase.operation,
-          method: testCase.method,
-          path: testCase.path,
-          status: 'failed',
-          durationMs: Date.now() - startedAt,
-          error: message,
-        };
+        return { ...identity, status: 'failed', durationMs: Date.now() - startedAt, error: message };
       }
     }),
   );
@@ -206,10 +298,15 @@ const main = async (): Promise<void> => {
     writeFileSync(reportPath, JSON.stringify({ total: results.length, failed: failed.length, results }));
   } else {
     for (const result of results) {
+      const suffix = result.label ? ` [${result.label}]` : '';
       if (result.status === 'passed')
-        console.log(`\u2714 ${result.operation} (${result.method} ${result.path}) ${result.durationMs}ms`);
+        console.log(
+          `\u2714 ${result.operation}${suffix} (${result.method} ${result.path}) ${result.durationMs}ms`,
+        );
       else
-        console.error(`\u2718 ${result.operation} (${result.method} ${result.path})\n${result.error ?? ''}`);
+        console.error(
+          `\u2718 ${result.operation}${suffix} (${result.method} ${result.path})\n${result.error ?? ''}`,
+        );
     }
     if (results.length === 0) {
       console.error('No code samples ran (empty SDK or a SCALAR_SMOKE_FILTER that matched nothing).');

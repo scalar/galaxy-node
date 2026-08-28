@@ -45,12 +45,12 @@ const client = new Galaxy({
   environment: 'production',
 });
 
-const listAllData = await client.planets.listAllData({
+const planet = await client.planets.listAllData({
   limit: 10,
   offset: 0,
 });
 
-console.log(listAllData);
+console.log(planet);
 ```
 
 Method names, parameter shapes, and response types are generated from the API description — do not guess them. Look up the exact call signature in [api.md](./api.md) before writing a call.
@@ -63,7 +63,7 @@ Non-success responses throw generated API errors. Error objects expose status, h
 import { APIError } from '@scalar/galaxy-node';
 
 try {
-  const listAllData = await client.planets.listAllData({
+  const planet = await client.planets.listAllData({
     limit: 10,
     offset: 0,
   });

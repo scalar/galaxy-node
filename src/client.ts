@@ -30,11 +30,11 @@ import {
   Planets,
   type Planet,
   type PlanetListAllDataResponse,
-  type PlanetUploadImageResponse,
+  type PlanetDelteImageResponse,
   type PlanetListAllDataParams,
   type PlanetCreateParams,
   type PlanetUpdateParams,
-  type PlanetUploadImageParams,
+  type PlanetDelteImageParams,
 } from './resources/planets';
 import {
   CelestialBodies,
@@ -1071,11 +1071,11 @@ export declare namespace Galaxy {
     Planets as Planets,
     type Planet as Planet,
     type PlanetListAllDataResponse as PlanetListAllDataResponse,
-    type PlanetUploadImageResponse as PlanetUploadImageResponse,
+    type PlanetDelteImageResponse as PlanetDelteImageResponse,
     type PlanetListAllDataParams as PlanetListAllDataParams,
     type PlanetCreateParams as PlanetCreateParams,
     type PlanetUpdateParams as PlanetUpdateParams,
-    type PlanetUploadImageParams as PlanetUploadImageParams,
+    type PlanetDelteImageParams as PlanetDelteImageParams,
   };
 
   export {

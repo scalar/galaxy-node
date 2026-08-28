@@ -7,8 +7,8 @@ export type {
   PlanetListAllDataResponse,
   PlanetCreateParams,
   PlanetUpdateParams,
-  PlanetUploadImageParams,
-  PlanetUploadImageResponse,
+  PlanetDelteImageParams,
+  PlanetDelteImageResponse,
 } from './planets';
 export { CelestialBodies } from './celestial-bodies';
 export type { CelestialBody, CelestialBodyCreateParams } from './celestial-bodies';

@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.3.2](https://github.com/scalar/galaxy-node/compare/v0.3.1...v0.3.2) (2026-09-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** 3 breaking changes to the SDK surface.
+    - Property `planet.habitabilityIndex` type changed from `number<float>` to `number<float>`.
+    - Property `planet.physicalProperties` type changed from `object` to `object`.
+    - Property `planet.atmosphere` type changed from `Array<object>` to `Array<object>`.
+
+### Features
+
+* **api:** update property planet.habitabilityIndex (+3 more changes) ([8d0ff7e](https://github.com/scalar/galaxy-node/commit/8d0ff7e2aa84607726ac72c6e05e27419a47ce09))
+
+
+### Chores
+
+* **api:** regenerate SDK ([d50b8ba](https://github.com/scalar/galaxy-node/commit/d50b8ba84a657eee4bd3b5c7fe70850ddd9af2f0))
+* **api:** regenerate SDK ([bd18a0c](https://github.com/scalar/galaxy-node/commit/bd18a0c1eb75a759ada7bbab974213e6f72ef31b))
+* **api:** update generated SDK content ([9d6483a](https://github.com/scalar/galaxy-node/commit/9d6483a04e40d1c4bccf8ef8265b3b58adf41dd1))
+* release 0.3.2 ([8a2c784](https://github.com/scalar/galaxy-node/commit/8a2c78415c023eb0b8730eebc5809fcac9016def))
+* release 0.3.2 ([93b41c4](https://github.com/scalar/galaxy-node/commit/93b41c48a9779d32d249322604bfa6a99d37c2b0))
+
 ## [0.3.1](https://github.com/scalar/galaxy-node/compare/v0.3.0...v0.3.1) (2026-08-28)
 
 

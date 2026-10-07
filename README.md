@@ -60,14 +60,14 @@ Pass credentials to the generated client constructor. Environment variables are 
 
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
-| `bearerAuth` | `string \| provider` | - | JWT Bearer token authentication Defaults to BEARER_AUTH. |
-| `basicAuthUsername` | `string \| provider` | - | Basic HTTP authentication Defaults to BASIC_AUTH_USERNAME. |
-| `basicAuthPassword` | `string \| provider` | - | Basic HTTP authentication Defaults to BASIC_AUTH_PASSWORD. |
-| `apiKeyHeader` | `string \| provider` | - | API key request header Defaults to API_KEY_HEADER. |
-| `apiKeyQuery` | `string \| provider` | - | API key query parameter Defaults to API_KEY_QUERY. |
-| `apiKeyCookie` | `string \| provider` | - | API key browser cookie Defaults to API_KEY_COOKIE. |
-| `oAuth2` | `string \| provider` | - | OAuth 2.0 authentication Defaults to SCALAR_O_AUTH2. |
-| `openIDConnect` | `string \| provider` | - | OpenID Connect Authentication Defaults to SCALAR_OPEN_ID_CONNECT. |
+| `bearerAuth` | `string \| AuthTokenProvider` | - | JWT Bearer token authentication Defaults to BEARER_AUTH. |
+| `basicAuthUsername` | `string \| AuthTokenProvider` | - | Basic HTTP authentication Defaults to BASIC_AUTH_USERNAME. |
+| `basicAuthPassword` | `string \| AuthTokenProvider` | - | Basic HTTP authentication Defaults to BASIC_AUTH_PASSWORD. |
+| `apiKeyHeader` | `string \| AuthTokenProvider` | - | API key request header Defaults to API_KEY_HEADER. |
+| `apiKeyQuery` | `string \| AuthTokenProvider` | - | API key query parameter Defaults to API_KEY_QUERY. |
+| `apiKeyCookie` | `string \| AuthTokenProvider` | - | API key browser cookie Defaults to API_KEY_COOKIE. |
+| `oAuth2` | `string \| AuthTokenProvider` | - | OAuth 2.0 authentication Defaults to SCALAR_O_AUTH2. |
+| `openIDConnect` | `string \| AuthTokenProvider` | - | OpenID Connect Authentication Defaults to SCALAR_OPEN_ID_CONNECT. |
 
 Declared schemes:
 

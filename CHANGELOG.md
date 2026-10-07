@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.3](https://github.com/scalar/galaxy-node/compare/v0.3.2...v0.3.3) (2026-10-07)
+
+
+### Chores
+
+* **api:** regenerate SDK ([246e56b](https://github.com/scalar/galaxy-node/commit/246e56b91dcd34b5a823817de9c24ba140996431))
+* **api:** regenerate SDK ([0fbedef](https://github.com/scalar/galaxy-node/commit/0fbedefbd566f34ec42acf62d5b564017bef7c04))
+* **api:** update generated SDK content ([25e1b91](https://github.com/scalar/galaxy-node/commit/25e1b91dd668612c9123dc10a88fcb9f97472a7f))
+
 ## [0.3.2](https://github.com/scalar/galaxy-node/compare/v0.3.1...v0.3.2) (2026-09-15)
 
 

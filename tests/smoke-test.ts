@@ -16,7 +16,7 @@ import { writeFileSync } from 'node:fs';
 import Galaxy from '@scalar/galaxy-node';
 
 // One shared client runs every case.
-const client = new Galaxy();
+const client = new Galaxy({ maxRetries: 2, timeout: 10_000 });
 
 // The result of running one case, collected for the JSON report or the printed table.
 type SmokeResult = {

@@ -45,7 +45,7 @@ const client = new Galaxy({
   environment: 'production',
 });
 
-const planet = await client.planets.listAllData({
+const planet = await client.planets.list({
   limit: 10,
   offset: 0,
 });
@@ -63,7 +63,7 @@ Non-success responses throw generated API errors. Error objects expose status, h
 import { APIError } from '@scalar/galaxy-node';
 
 try {
-  const planet = await client.planets.listAllData({
+  const planet = await client.planets.list({
     limit: 10,
     offset: 0,
   });

@@ -42,11 +42,11 @@ const cases: {
   run: () => Promise<unknown>;
 }[] = [
   {
-    operation: 'listAllData',
+    operation: 'list',
     method: 'GET',
     path: '/planets',
     run: async () => {
-      const planet = await client.planets.listAllData({
+      const planet = await client.planets.list({
         limit: 10,
         offset: 0,
       });
@@ -152,22 +152,22 @@ const cases: {
   },
 
   {
-    operation: 'delteImage',
+    operation: 'uploadImage',
     method: 'POST',
     path: '/planets/{planetId}/image',
     label: 'required params',
     run: async () => {
-      const planet = await client.planets.delteImage(1);
+      const planet = await client.planets.uploadImage(1);
     },
   },
 
   {
-    operation: 'delteImage',
+    operation: 'uploadImage',
     method: 'POST',
     path: '/planets/{planetId}/image',
     label: 'all params',
     run: async () => {
-      const planet = await client.planets.delteImage(1, {
+      const planet = await client.planets.uploadImage(1, {
         image: new File(['@mars.jpg'], '@mars.jpg'),
       });
     },

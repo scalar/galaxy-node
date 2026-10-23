@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.4.0](https://github.com/scalar/galaxy-node/compare/v0.3.3...v0.4.0) (2026-10-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** 5 breaking changes to the SDK surface.
+    - Removed operation `planets.listAllData` (`GET /planets`).
+    - Removed operation `planets.delteImage` (`POST /planets/{planetId}/image`).
+    - Removed schema `ListAllDataResponseHeaders`.
+    - Removed schema `DelteImageResponseHeaders`.
+    - Removed schema `DelteImageStatus400ResponseHeaders`.
+
+### Features
+
+* **api:** remove operation planets.listAllData (+9 more changes) ([6407dc3](https://github.com/scalar/galaxy-node/commit/6407dc3776bf269dad847d04cccefa121afab39e))
+
+
+### Chores
+
+* **api:** regenerate SDK ([5e6a4d1](https://github.com/scalar/galaxy-node/commit/5e6a4d1489bc3b1263fab700c90615c450b8f8b9))
+
 ## [0.3.3](https://github.com/scalar/galaxy-node/compare/v0.3.2...v0.3.3) (2026-10-07)
 
 

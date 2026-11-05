@@ -1,12 +1,16 @@
 {
   "name": "@scalar/galaxy-node",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "The Scalar Galaxy is an example OpenAPI document to test OpenAPI tools and libraries. It's a fictional universe with fictional planets and fictional data.",
   "author": "Scalar Galaxy",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/scalar/galaxy-node.git"
   },
+  "bugs": {
+    "url": "https://github.com/scalar/galaxy-node/issues"
+  },
+  "homepage": "https://github.com/scalar/galaxy-node",
   "type": "module",
   "sideEffects": false,
   "main": "./dist/cjs/index.js",
@@ -48,9 +52,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.cjs.json --noEmit",
     "prepublishOnly": "npm run build"
   },
-  "dependencies": {
-    "standardwebhooks": "^1.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "typescript": "^6.0.0"
   },

@@ -39,11 +39,11 @@ It's easy to say you know them all, but do you really? Retrieve all the planets 
 
 | Direction | Type |
 | --- | --- |
-| Request | [`PlanetListAllDataParams`](./src/resources/planets.ts) |
-| Response | [`PlanetListAllDataResponse`](./src/resources/planets.ts) |
+| Request | [`PlanetListParams`](./src/resources/planets.ts) |
+| Response | [`PlanetListResponse`](./src/resources/planets.ts) |
 
 ```ts
-const planet = await client.planets.listAllData({
+const planet = await client.planets.list({
   limit: 10,
   offset: 0,
 });
@@ -105,11 +105,11 @@ Got a crazy good photo of a planet? Share it with the world!
 
 | Direction | Type |
 | --- | --- |
-| Request | [`PlanetDelteImageParams`](./src/resources/planets.ts) |
-| Response | [`PlanetDelteImageResponse`](./src/resources/planets.ts) |
+| Request | [`PlanetUploadImageParams`](./src/resources/planets.ts) |
+| Response | [`PlanetUploadImageResponse`](./src/resources/planets.ts) |
 
 ```ts
-const planet = await client.planets.delteImage(1);
+const planet = await client.planets.uploadImage(1);
 ```
 
 ## `CelestialBodies`

@@ -45,7 +45,7 @@ const client = new Galaxy({
   environment: 'production',
 });
 
-const planet = await client.planets.listAllData({
+const planet = await client.planets.list({
   limit: 10,
   offset: 0,
 });
@@ -63,7 +63,7 @@ Non-success responses throw generated API errors. Error objects expose status, h
 import { APIError } from '@scalar/galaxy-node';
 
 try {
-  const planet = await client.planets.listAllData({
+  const planet = await client.planets.list({
     limit: 10,
     offset: 0,
   });
@@ -78,8 +78,9 @@ try {
 ## Requirements
 
 - Node.js 20+, a modern browser, or any runtime with `fetch` support
+- TypeScript 5.8+ for type checking, with `moduleResolution` set to `node16` or `nodenext` (from CommonJS or ES modules) or `bundler`
 
 ## Reference files
 
-- [README.md](./README.md) — full feature tour: client options, request options, retries and timeouts, logging.
+- [README.md](./README.md) — full feature tour: client options, request options, retries and timeouts, webhooks, logging.
 - [api.md](./api.md) — complete catalogue of every operation with request and response types.
